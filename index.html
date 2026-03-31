@@ -19,574 +19,369 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg0);color:var(--t1);min-
 .date-nav{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:var(--bg1);border-bottom:1px solid var(--bdr)}
 .date-nav button{background:var(--bg2);border:1px solid var(--bdr);color:var(--t1);width:40px;height:40px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
 .date-nav button:active{transform:scale(.9);background:var(--ac)}
-.date-display{text-align:center;cursor:pointer}
-.date-display .day-name{font-size:13px;color:var(--t3);text-transform:uppercase;letter-spacing:1px}
-.date-display .day-full{font-size:17px;font-weight:600;margin-top:2px}
-.ov{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:200;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px);padding:20px}
-.ov.active{display:flex}
+.date-display{text-align:center;cursor:pointer}.date-display .day-name{font-size:13px;color:var(--t3);text-transform:uppercase;letter-spacing:1px}.date-display .day-full{font-size:17px;font-weight:600;margin-top:2px}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:200;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px);padding:20px}.ov.active{display:flex}
 .cal{background:var(--bg2);border-radius:var(--r);padding:20px;width:340px;border:1px solid var(--bdr);box-shadow:0 20px 60px rgba(0,0,0,.5)}
-.cal-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
-.cal-hdr span{font-weight:600;font-size:16px}
-.cal-hdr button{background:none;border:none;color:var(--t1);font-size:20px;cursor:pointer;padding:4px 10px}
-.cal-g{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}
-.cal-g .dl{font-size:11px;color:var(--t3);padding:6px 0;font-weight:600}
-.cal-g .cd{padding:8px 4px;border-radius:8px;cursor:pointer;font-size:14px;transition:all .15s;color:var(--t2)}
-.cal-g .cd:hover{background:var(--bg3)}.cal-g .cd.today{color:var(--ac);font-weight:700}.cal-g .cd.sel{background:var(--ac);color:#fff;font-weight:600}.cal-g .cd.hd{position:relative}.cal-g .cd.hd::after{content:'';position:absolute;bottom:2px;left:50%;transform:translateX(-50%);width:4px;height:4px;border-radius:50%;background:var(--ok)}.cal-g .cd.om{color:var(--t3);opacity:.3}
-.mdl{background:var(--bg2);border-radius:var(--r);padding:24px;width:100%;max-width:400px;border:1px solid var(--bdr);box-shadow:0 20px 60px rgba(0,0,0,.5)}.mdl h3{font-size:16px;margin-bottom:16px}
-.mf{margin-bottom:12px}.mf label{display:block;font-size:12px;color:var(--t3);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px}.mf input,.mf textarea{width:100%;padding:10px 12px;background:var(--bg3);border:1px solid var(--bdr);border-radius:var(--rs);color:var(--t1);font-family:inherit;font-size:14px;outline:none;transition:border .2s}.mf textarea{resize:vertical;min-height:60px}.mf input:focus,.mf textarea:focus{border-color:var(--ac)}
-.mb{display:flex;gap:10px;margin-top:18px}.mbtn{flex:1;padding:12px;border:none;border-radius:var(--rs);font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;transition:all .15s}.mbtn:active{transform:scale(.97)}.mbtn-p{background:var(--ac);color:#fff}.mbtn-d{background:var(--dng);color:#fff}.mbtn-c{background:rgba(255,255,255,.06);color:var(--t2)}
+.cal-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}.cal-hdr span{font-weight:600;font-size:16px}.cal-hdr button{background:none;border:none;color:var(--t1);font-size:20px;cursor:pointer;padding:4px 10px}
+.cal-g{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}.cal-g .dl{font-size:11px;color:var(--t3);padding:6px 0;font-weight:600}.cal-g .cd{padding:8px 4px;border-radius:8px;cursor:pointer;font-size:14px;transition:all .15s;color:var(--t2)}.cal-g .cd:hover{background:var(--bg3)}.cal-g .cd.today{color:var(--ac);font-weight:700}.cal-g .cd.sel{background:var(--ac);color:#fff;font-weight:600}.cal-g .cd.hd{position:relative}.cal-g .cd.hd::after{content:'';position:absolute;bottom:2px;left:50%;transform:translateX(-50%);width:4px;height:4px;border-radius:50%;background:var(--ok)}.cal-g .cd.om{color:var(--t3);opacity:.3}
+.mdl{background:var(--bg2);border-radius:var(--r);padding:24px;width:100%;max-width:420px;border:1px solid var(--bdr);box-shadow:0 20px 60px rgba(0,0,0,.5);max-height:90vh;overflow-y:auto}.mdl h3{font-size:16px;margin-bottom:16px}
+.mf{margin-bottom:10px}.mf label{display:block;font-size:11px;color:var(--t3);margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px}.mf input,.mf textarea{width:100%;padding:9px 10px;background:var(--bg3);border:1px solid var(--bdr);border-radius:var(--rs);color:var(--t1);font-family:inherit;font-size:14px;outline:none}.mf textarea{resize:vertical;min-height:50px}.mf input:focus,.mf textarea:focus{border-color:var(--ac)}
+.mb{display:flex;gap:10px;margin-top:16px}.mbtn{flex:1;padding:12px;border:none;border-radius:var(--rs);font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;transition:all .15s}.mbtn:active{transform:scale(.97)}.mbtn-p{background:var(--ac);color:#fff}.mbtn-d{background:var(--dng);color:#fff}.mbtn-c{background:rgba(255,255,255,.06);color:var(--t2)}
 .cfood{font-weight:600;color:var(--t1);font-size:14px;padding:10px;background:rgba(255,255,255,.04);border-radius:8px;margin:8px 0 18px;word-break:break-word;text-align:center}
+.mgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+/* Daily summary */
 .ds{margin:16px 20px;padding:20px;background:linear-gradient(135deg,var(--bg2),var(--bg1));border-radius:var(--r);border:1px solid var(--bdr);position:relative;overflow:hidden}.ds::before{content:'';position:absolute;top:-40px;right:-40px;width:120px;height:120px;background:var(--acg);border-radius:50%;filter:blur(40px)}
 .tl{font-size:12px;color:var(--t3);text-transform:uppercase;letter-spacing:1.5px}.tk{font-family:'Playfair Display',serif;font-size:48px;font-weight:700;background:linear-gradient(135deg,var(--t1),var(--acl));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.1}.tu{font-size:14px;color:var(--t3);margin-top:2px}
 .tb{margin-top:14px;height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden}.tbf{height:100%;border-radius:3px;transition:width .6s ease;background:linear-gradient(90deg,var(--ok),var(--ac))}.tt{margin-top:6px;font-size:12px;color:var(--t3);display:flex;justify-content:space-between}
+/* Macro RI bars */
+.macro-bars{display:flex;flex-direction:column;gap:6px;margin-top:14px;position:relative;z-index:1}
+.mb-row{display:flex;align-items:center;gap:8px}
+.mb-label{font-size:11px;color:var(--t3);width:50px;text-align:right;flex-shrink:0}
+.mb-barw{flex:1;height:8px;background:rgba(255,255,255,.04);border-radius:4px;overflow:hidden}
+.mb-bar{height:100%;border-radius:4px;transition:width .5s ease}
+.mb-val{font-size:11px;color:var(--t2);width:70px;flex-shrink:0;font-weight:600}
+/* Category cards */
 .cats{padding:0 20px}.cc{background:var(--bg2);border-radius:var(--r);margin-bottom:10px;border:1px solid var(--bdr);overflow:hidden;transition:all .2s;animation:fi .3s ease forwards}
 .ch{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;cursor:pointer}.cl{display:flex;align-items:center;gap:12px}.cdot{width:10px;height:10px;border-radius:50%;flex-shrink:0}.cn{font-weight:600;font-size:15px}.ck{font-size:14px;font-weight:600;color:var(--t2)}
 .cb{padding:0 16px 14px;display:none}.cc.open .cb{display:block}.cc.open{border-color:rgba(233,69,96,.2)}
-.er{display:flex;align-items:center;padding:10px 0;border-bottom:1px solid var(--bdr);gap:8px}.er:last-of-type{border-bottom:none}.ef{flex:1;color:var(--t2);font-size:13px;line-height:1.4;min-width:0}.ec{font-weight:600;white-space:nowrap;color:var(--t1);font-size:13px;padding:0 4px}
+.er{padding:10px 0;border-bottom:1px solid var(--bdr)}.er:last-of-type{border-bottom:none}.er-top{display:flex;align-items:center;gap:8px}.ef{flex:1;color:var(--t2);font-size:13px;line-height:1.4;min-width:0}.ec{font-weight:600;white-space:nowrap;color:var(--t1);font-size:13px;padding:0 4px}
 .ea{display:flex;gap:6px;flex-shrink:0}.ab{width:34px;height:34px;border-radius:8px;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;transition:all .15s}.ab:active{transform:scale(.85)}.be{background:var(--edbg);color:var(--edc)}.bd{background:var(--dngbg);color:var(--dng)}
+.er-macros{display:flex;gap:8px;margin-top:4px;font-size:10px;color:var(--t3);flex-wrap:wrap}.er-macros span{white-space:nowrap}
 .afs{margin-top:12px;padding-top:12px;border-top:1px solid var(--bdr)}.afr{display:flex;gap:8px}.afr input{flex:1;padding:10px 12px;background:var(--bg3);border:1px solid var(--bdr);border-radius:var(--rs);color:var(--t1);font-family:inherit;font-size:14px;outline:none}.afr input:focus{border-color:var(--ac)}.afr input::placeholder{color:var(--t3)}.afr .ci{width:80px;text-align:center}
-.adb{background:var(--ac);border:none;color:#fff;width:40px;height:40px;border-radius:var(--rs);font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}.adb:active{transform:scale(.9)}.adb:disabled{opacity:.5;cursor:default;transform:none}
-.ail{margin-top:8px;display:flex;gap:8px;align-items:center}.ailb{background:linear-gradient(135deg,#6c5ce7,#a29bfe);border:none;color:#fff;padding:8px 14px;border-radius:var(--rs);font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap}.ailb:active{transform:scale(.95)}.ais{font-size:11px;color:var(--t3);font-style:italic}.aih{font-size:11px;color:var(--t3);margin-top:6px}
-.tabs{position:fixed;bottom:0;left:0;right:0;background:var(--bg1);border-top:1px solid var(--bdr);display:flex;justify-content:center;padding:8px 0 max(8px,env(safe-area-inset-bottom));z-index:100}.tab{background:none;border:none;color:var(--t3);font-family:inherit;font-size:11px;padding:6px 20px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;transition:color .2s}.tab.active{color:var(--ac)}.tab-icon{font-size:20px}
-.cv{display:none;padding:16px 20px}.cv.active{display:block}.tv.hidden{display:none}.wv{display:none;padding:20px}.wv.active{display:block}
+.adb{background:var(--ac);border:none;color:#fff;width:40px;height:40px;border-radius:var(--rs);font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}.adb:active{transform:scale(.9)}.adb:disabled{opacity:.5}
+.ail{margin-top:8px;display:flex;gap:8px;align-items:center}.ailb{background:linear-gradient(135deg,#6c5ce7,#a29bfe);border:none;color:#fff;padding:8px 14px;border-radius:var(--rs);font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap}.ailb:active{transform:scale(.95)}
+.aih{font-size:11px;color:var(--t3);margin-top:6px}
+/* Tabs */
+.tabs{position:fixed;bottom:0;left:0;right:0;background:var(--bg1);border-top:1px solid var(--bdr);display:flex;justify-content:center;padding:6px 0 max(6px,env(safe-area-inset-bottom));z-index:100}.tab{background:none;border:none;color:var(--t3);font-family:inherit;font-size:10px;padding:4px 12px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;transition:color .2s}.tab.active{color:var(--ac)}.tab-icon{font-size:18px}
+/* Views */
+.cv,.wv,.av{display:none;padding:16px 20px}.cv.active,.wv.active,.av.active{display:block}.tv.hidden{display:none}
 .crd{background:var(--bg2);border-radius:var(--r);padding:16px;margin-bottom:12px;border:1px solid var(--bdr)}.ct{font-size:14px;font-weight:600;margin-bottom:10px;color:var(--t2)}
-.ptabs{display:flex;gap:0;border-radius:var(--rs);overflow:hidden;border:1px solid var(--bdr);margin-bottom:14px}.pt{flex:1;padding:8px 0;text-align:center;font-size:13px;font-weight:600;cursor:pointer;background:transparent;border:none;color:var(--t3);font-family:inherit;transition:all .2s}.pt.active{background:var(--ac);color:#fff}.pt:active{opacity:.8}
-.fchips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}.chip{padding:5px 11px;border-radius:20px;font-size:11px;font-weight:600;cursor:pointer;border:1px solid var(--bdr);background:transparent;color:var(--t3);transition:all .2s;white-space:nowrap}.chip.act{color:#fff;border-color:transparent}.chip:active{transform:scale(.95)}
-.bc{display:flex;align-items:flex-end;gap:4px;height:200px;padding-bottom:28px;position:relative;overflow-x:auto}.bc-col{flex:1;display:flex;flex-direction:column;align-items:center;height:100%;justify-content:flex-end;min-width:20px}.bc-bar{width:100%;max-width:36px;border-radius:5px 5px 0 0;transition:height .5s ease;min-height:1px}.bc-lbl{font-size:9px;color:var(--t3);margin-top:4px;text-align:center;white-space:nowrap}.bc-val{font-size:8px;color:var(--t2);margin-bottom:3px;font-weight:600}
-.stk{display:flex;flex-direction:column-reverse;width:100%;max-width:36px;border-radius:5px 5px 0 0;overflow:hidden;transition:height .5s ease}.stk-s{width:100%;min-height:0}
-.day-bk{display:flex;flex-direction:column;gap:8px}.day-bk-row{display:flex;align-items:center;gap:10px}.day-bk-name{font-size:13px;color:var(--t2);width:100px;flex-shrink:0}.day-bk-barw{flex:1;height:14px;background:rgba(255,255,255,.04);border-radius:7px;overflow:hidden}.day-bk-bar{height:100%;border-radius:7px;transition:width .5s ease}.day-bk-val{font-size:13px;font-weight:600;width:55px;text-align:right;flex-shrink:0}
+.ptabs{display:flex;gap:0;border-radius:var(--rs);overflow:hidden;border:1px solid var(--bdr);margin-bottom:14px}.pt{flex:1;padding:8px 0;text-align:center;font-size:13px;font-weight:600;cursor:pointer;background:transparent;border:none;color:var(--t3);font-family:inherit}.pt.active{background:var(--ac);color:#fff}
+.fchips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}.chip{padding:5px 11px;border-radius:20px;font-size:11px;font-weight:600;cursor:pointer;border:1px solid var(--bdr);background:transparent;color:var(--t3);transition:all .2s;white-space:nowrap}.chip.act{color:#fff;border-color:transparent}
+.bc{display:flex;align-items:flex-end;gap:4px;height:200px;padding-bottom:28px;overflow-x:auto}.bc-col{flex:1;display:flex;flex-direction:column;align-items:center;height:100%;justify-content:flex-end;min-width:20px}.bc-bar{width:100%;max-width:36px;border-radius:5px 5px 0 0;min-height:1px}.bc-lbl{font-size:9px;color:var(--t3);margin-top:4px;text-align:center;white-space:nowrap}.bc-val{font-size:8px;color:var(--t2);margin-bottom:3px;font-weight:600}
+.stk{display:flex;flex-direction:column-reverse;width:100%;max-width:36px;border-radius:5px 5px 0 0;overflow:hidden}.stk-s{width:100%;min-height:0}
+.day-bk{display:flex;flex-direction:column;gap:8px}.day-bk-row{display:flex;align-items:center;gap:10px}.day-bk-name{font-size:13px;color:var(--t2);width:100px;flex-shrink:0}.day-bk-barw{flex:1;height:14px;background:rgba(255,255,255,.04);border-radius:7px;overflow:hidden}.day-bk-bar{height:100%;border-radius:7px}.day-bk-val{font-size:13px;font-weight:600;width:55px;text-align:right;flex-shrink:0}
 .dnt-c{display:flex;align-items:center;gap:20px}.dnt-svg{width:130px;height:130px;flex-shrink:0}.dnt-leg{display:flex;flex-direction:column;gap:6px}.li{display:flex;align-items:center;gap:8px;font-size:12px}.ld{width:8px;height:8px;border-radius:50%;flex-shrink:0}.ln{color:var(--t2)}.lv{font-weight:600;color:var(--t1);margin-left:auto}
-.drr{display:flex;gap:8px;margin-bottom:12px}.drr .mf{flex:1;margin-bottom:0}.drr input[type="date"]{width:100%;padding:10px 8px;background:var(--bg3);border:1px solid var(--bdr);border-radius:var(--rs);color:var(--t1);font-family:inherit;font-size:13px;outline:none;-webkit-appearance:none}.drr input[type="date"]:focus{border-color:var(--ac)}.drr input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(1);opacity:.5}
-.sbtns{display:flex;flex-wrap:wrap;gap:8px}.sbtn{display:flex;align-items:center;gap:6px;padding:10px 14px;border:none;border-radius:var(--rs);font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;color:#fff;flex:1;min-width:calc(50% - 4px);justify-content:center}.sbtn:active{transform:scale(.95)}.sb-wa{background:#25D366}.sb-sg{background:#3A76F0}.sb-ml{background:#EA4335}.sb-cp{background:var(--bg3);color:var(--t1);border:1px solid var(--bdr)}.sb-img{background:linear-gradient(135deg,#6c5ce7,#a29bfe)}
-.wdr{display:flex;align-items:center;padding:12px 0;border-bottom:1px solid var(--bdr);cursor:pointer}.wdn{width:80px;font-size:14px;font-weight:600}.wdbw{flex:1;height:8px;background:rgba(255,255,255,.06);border-radius:4px;margin:0 12px;overflow:hidden}.wdb{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--ok),var(--ac));transition:width .5s ease}.wdk{width:60px;text-align:right;font-weight:600;font-size:14px}.wtr{display:flex;justify-content:space-between;padding:16px 0 0;font-weight:700;font-size:16px}
-.sr{display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--bdr)}.sl{font-size:14px;color:var(--t2)}.si{width:80px;padding:8px;background:var(--bg3);border:1px solid var(--bdr);border-radius:var(--rs);color:var(--t1);font-family:inherit;font-size:14px;text-align:center;outline:none}.si:focus{border-color:var(--ac)}
+.drr{display:flex;gap:8px;margin-bottom:12px}.drr .mf{flex:1;margin-bottom:0}.drr input[type="date"]{width:100%;padding:10px 8px;background:var(--bg3);border:1px solid var(--bdr);border-radius:var(--rs);color:var(--t1);font-family:inherit;font-size:13px;outline:none;-webkit-appearance:none}.drr input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(1);opacity:.5}
+.sbtns{display:flex;flex-wrap:wrap;gap:8px}.sbtn{display:flex;align-items:center;gap:6px;padding:10px 14px;border:none;border-radius:var(--rs);font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;color:#fff;flex:1;min-width:calc(50% - 4px);justify-content:center}.sbtn:active{transform:scale(.95)}.sb-cp{background:var(--bg3);color:var(--t1);border:1px solid var(--bdr)}.sb-img{background:linear-gradient(135deg,#6c5ce7,#a29bfe)}
+.sr{display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--bdr)}.sl{font-size:14px;color:var(--t2)}.si{width:80px;padding:8px;background:var(--bg3);border:1px solid var(--bdr);border-radius:var(--rs);color:var(--t1);font-family:inherit;font-size:14px;text-align:center;outline:none}
 .spinner{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.2);border-top-color:#fff;border-radius:50%;animation:sp .6s linear infinite}@keyframes sp{to{transform:rotate(360deg)}}
-.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--bg2);color:var(--t1);padding:10px 20px;border-radius:30px;font-size:13px;border:1px solid var(--ac);opacity:0;transition:all .3s;z-index:300;pointer-events:none;max-width:90%;text-align:center}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--bg2);color:var(--t1);padding:10px 20px;border-radius:30px;font-size:13px;border:1px solid var(--ac);opacity:0;transition:all .3s;z-index:300;pointer-events:none;max-width:90%;text-align:center}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 @keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 #expCnv{display:none}
 .add-status{font-size:11px;color:var(--t3);margin-top:6px;min-height:18px;display:flex;align-items:center;gap:6px}
-.ac-wrap{position:relative}
-.ac-list{position:absolute;top:100%;left:0;right:0;background:var(--bg2);border:1px solid var(--bdr);border-top:none;border-radius:0 0 var(--rs) var(--rs);max-height:180px;overflow-y:auto;z-index:50;display:none}
-.ac-list.show{display:block}
-.ac-item{padding:10px 12px;font-size:13px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--bdr);transition:background .1s}
-.ac-item:last-child{border-bottom:none}
-.ac-item:active,.ac-item:hover{background:var(--bg3)}
-.ac-food{color:var(--t2)}.ac-kcal{color:var(--t1);font-weight:600;font-size:12px;white-space:nowrap;margin-left:8px}
+.ac-wrap{position:relative}.ac-list{position:absolute;top:100%;left:0;right:0;background:var(--bg2);border:1px solid var(--bdr);border-top:none;border-radius:0 0 var(--rs) var(--rs);max-height:180px;overflow-y:auto;z-index:50;display:none}.ac-list.show{display:block}.ac-item{padding:10px 12px;font-size:13px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--bdr)}.ac-item:last-child{border-bottom:none}.ac-item:active{background:var(--bg3)}.ac-food{color:var(--t2)}.ac-kcal{color:var(--t1);font-weight:600;font-size:12px;white-space:nowrap;margin-left:8px}
+/* Analyse tab */
+.analysis-content{font-size:14px;color:var(--t2);line-height:1.7;white-space:pre-wrap}
+.analysis-content strong{color:var(--t1)}
+.an-btn{background:linear-gradient(135deg,#6c5ce7,#a29bfe);border:none;color:#fff;padding:12px 20px;border-radius:var(--rs);font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;width:100%;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:8px}
+.an-btn:active{transform:scale(.97)}.an-btn:disabled{opacity:.5}
+.an-period{display:flex;gap:0;border-radius:var(--rs);overflow:hidden;border:1px solid var(--bdr);margin-bottom:14px}
+.an-pt{flex:1;padding:8px 0;text-align:center;font-size:13px;font-weight:600;cursor:pointer;background:transparent;border:none;color:var(--t3);font-family:inherit}.an-pt.active{background:var(--ac);color:#fff}
 </style>
 </head>
 <body>
 <div class="app">
   <div class="header"><h1>Calorieën Tracker</h1><div class="header-sub">Dagelijks voedingsdagboek</div></div>
-  <div class="date-nav"><button onclick="chgDate(-1)">‹</button><div class="date-display" onclick="togCal()"><div class="day-name" id="dn"></div><div class="day-full" id="df"></div></div><button onclick="chgDate(1)">›</button></div>
+  <div class="date-nav"><button onclick="chgDate(-1)">‹</button><div class="date-display" onclick="togCal()"><div class="day-name" id="dn"></div><div class="day-full" id="df"></div></div><button onclick="chgDate(1)">›</button><button onclick="goToday()" style="font-size:11px;width:auto;padding:0 10px;border-radius:var(--rs);font-weight:600">Nu</button></div>
+  <!-- Calendar -->
   <div class="ov" id="calOv" onclick="if(event.target===this)togCal()"><div class="cal"><div class="cal-hdr"><button onclick="chgCalM(-1)">‹</button><span id="calT"></span><button onclick="chgCalM(1)">›</button></div><div class="cal-g" id="calG"></div></div></div>
-  <div class="ov" id="edOv" style="z-index:250" onclick="if(event.target===this)clEd()"><div class="mdl"><h3>Invoer bewerken</h3><div class="mf"><label>Wat gegeten / gedronken</label><textarea id="edF"></textarea></div><div class="mf"><label>Calorieën (kcal)</label><input type="number" id="edK"></div><div class="mb"><button class="mbtn mbtn-c" onclick="clEd()">Annuleren</button><button class="mbtn mbtn-p" onclick="svEd()">Opslaan</button></div></div></div>
+  <!-- Edit modal -->
+  <div class="ov" id="edOv" style="z-index:250" onclick="if(event.target===this)clEd()"><div class="mdl"><h3>Invoer bewerken</h3><div class="mf"><label>Wat gegeten / gedronken</label><textarea id="edF"></textarea></div><div class="mgrid"><div class="mf"><label>kcal</label><input type="number" id="edK"></div><div class="mf"><label>Eiwit (g)</label><input type="number" step="0.1" id="edP"></div><div class="mf"><label>Koolh (g)</label><input type="number" step="0.1" id="edC"></div><div class="mf"><label>Vet (g)</label><input type="number" step="0.1" id="edFt"></div><div class="mf"><label>Suikers (g)</label><input type="number" step="0.1" id="edS"></div><div class="mf"><label>Vezels (g)</label><input type="number" step="0.1" id="edFi"></div><div class="mf"><label>Zout (g)</label><input type="number" step="0.01" id="edSa"></div></div><div class="mb"><button class="mbtn mbtn-c" onclick="clEd()">Annuleren</button><button class="mbtn mbtn-p" onclick="svEd()">Opslaan</button></div></div></div>
+  <!-- Delete confirm -->
   <div class="ov" id="cfOv" style="z-index:260" onclick="if(event.target===this)clCf()"><div class="mdl" style="max-width:340px;text-align:center"><p style="font-size:15px;color:var(--t2);margin-bottom:8px">Weet je zeker dat je dit wilt verwijderen?</p><div class="cfood" id="cfN"></div><div class="mb"><button class="mbtn mbtn-c" onclick="clCf()">Annuleren</button><button class="mbtn mbtn-d" onclick="cfDel()">Verwijderen</button></div></div></div>
+  <!-- TRACKER -->
   <div class="tv" id="tV">
-    <div class="ds"><div class="tl">Totaal vandaag</div><div class="tk" id="totK">0</div><div class="tu">kcal</div><div class="tb"><div class="tbf" id="tFill"></div></div><div class="tt"><span id="tPct">0%</span><span>Doel: <span id="tVal">2000</span> kcal</span></div></div>
+    <div class="ds"><div class="tl">Totaal vandaag</div><div class="tk" id="totK">0</div><div class="tu">kcal</div><div class="tb"><div class="tbf" id="tFill"></div></div><div class="tt"><span id="tPct">0%</span><span>Doel: <span id="tVal">2000</span> kcal</span></div><div class="macro-bars" id="mBars"></div></div>
     <div class="cats" id="cats"></div>
   </div>
-  <div class="cv" id="cV">
-    <div class="crd"><div class="ptabs"><button class="pt active" onclick="setPrd('dag')">Dag</button><button class="pt" onclick="setPrd('week')">Week</button><button class="pt" onclick="setPrd('maand')">Maand</button><button class="pt" onclick="setPrd('jaar')">Jaar</button></div><div class="fchips" id="fCh"></div></div>
-    <div id="chArea"></div>
-    <div class="crd" style="margin-top:4px"><div class="ct">Grafiek exporteren en delen</div><div class="drr"><div class="mf"><label>Van</label><input type="date" id="exFrom"></div><div class="mf"><label>Tot</label><input type="date" id="exTo"></div></div><div class="fchips" id="exCh" style="margin-bottom:12px"></div><div class="sbtns"><button class="sbtn sb-img" onclick="expCh()">📸 Afbeelding</button><button class="sbtn sb-wa" onclick="shrV('wa')">WhatsApp</button><button class="sbtn sb-sg" onclick="shrV('sg')">Signal</button><button class="sbtn sb-ml" onclick="shrV('ml')">E-mail</button><button class="sbtn sb-cp" onclick="shrV('cp')">📋 Kopieer</button></div></div>
-  </div>
-  <div class="wv" id="wV">
-    <div class="crd"><div class="ct">Weekoverzicht</div><div id="wRows"></div><div class="wtr"><span>Weektotaal</span><span id="wTot">0 kcal</span></div></div>
-    <div class="crd"><div class="ct">Instellingen</div>
-      <div class="sr"><span class="sl">Dagelijks doel (kcal)</span><input class="si" type="number" id="tInp" value="2000" onchange="updTgt(this.value)"></div>
-      <div class="sr" style="flex-direction:column;align-items:stretch;gap:8px">
-        <span class="sl">Gemini API-key (voor AI calorieën)</span>
-        <div style="display:flex;gap:8px">
-          <input type="password" id="keyInp" placeholder="Plak hier je Gemini API-key" style="flex:1;padding:8px;background:var(--bg3);border:1px solid var(--bdr);border-radius:var(--rs);color:var(--t1);font-family:inherit;font-size:13px;outline:none">
-          <button onclick="saveKey()" style="background:var(--ac);color:#fff;border:none;padding:8px 14px;border-radius:var(--rs);font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap">Opslaan</button>
-        </div>
-        <div id="keyStatus" style="font-size:11px;color:var(--t3)"></div>
-        <div style="font-size:11px;color:var(--t3);line-height:1.5">Gratis key aanmaken: <a href="https://aistudio.google.com/apikey" target="_blank" style="color:var(--edc)">aistudio.google.com/apikey</a><br>Zonder key werkt de app met de lokale suggestielijst.</div>
-      </div>
-    </div>
+  <!-- CHARTS -->
+  <div class="cv" id="cV"><div class="crd"><div class="ptabs"><button class="pt active" onclick="setPrd('dag')">Dag</button><button class="pt" onclick="setPrd('week')">Week</button><button class="pt" onclick="setPrd('maand')">Maand</button><button class="pt" onclick="setPrd('jaar')">Jaar</button></div><div class="fchips" id="fCh"></div></div><div id="chArea"></div><div class="crd" style="margin-top:4px"><div class="ct">Exporteren en delen</div><div class="drr"><div class="mf"><label>Van</label><input type="date" id="exFrom"></div><div class="mf"><label>Tot</label><input type="date" id="exTo"></div></div><div class="fchips" id="exCh" style="margin-bottom:12px"></div><div class="sbtns"><button class="sbtn sb-img" onclick="expCh()">📸 Afbeelding</button><button class="sbtn" style="background:var(--ac)" onclick="shrV('share')">📤 Delen</button><button class="sbtn sb-cp" onclick="shrV('cp')">📋 Kopieer</button></div></div></div>
+  <!-- ANALYSE -->
+  <div class="av" id="aV">
     <div class="crd">
-      <div class="ct">Data backup</div>
-      <div style="font-size:12px;color:var(--t3);margin-bottom:12px;line-height:1.5">Je data staat lokaal in je browser. Maak regelmatig een backup, vooral voor je van telefoon wisselt of je browserdata wist.</div>
-      <div style="display:flex;flex-direction:column;gap:8px">
-        <button class="sbtn sb-img" style="min-width:100%;justify-content:center" onclick="expData()">📥 Exporteer data (JSON)</button>
-        <button class="sbtn sb-img" style="min-width:100%;justify-content:center;background:var(--ok)" onclick="document.getElementById('impFile').click()">📤 Importeer data (JSON)</button>
-        <input type="file" id="impFile" accept=".json" style="display:none" onchange="impData(event)">
-      </div>
-      <div id="impStatus" style="font-size:12px;color:var(--t3);margin-top:8px;min-height:18px"></div>
-      <div style="margin-top:14px;border-top:1px solid var(--bdr);padding-top:14px">
-        <button style="background:var(--dngbg);color:var(--dng);border:1px solid rgba(255,71,87,.3);padding:10px 16px;border-radius:var(--rs);font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;width:100%" onclick="clearAllData()">🗑️ Wis alle data</button>
-      </div>
+      <div class="ct">AI Voedingsanalyse</div>
+      <div class="an-period"><button class="an-pt active" onclick="setAnP('dag')">Vandaag</button><button class="an-pt" onclick="setAnP('week')">Week</button><button class="an-pt" onclick="setAnP('maand')">Maand</button></div>
+      <button class="an-btn" id="anBtn" onclick="runAnalysis()">🧠 Analyseer mijn voeding</button>
+      <div id="anResult" style="margin-top:14px"></div>
     </div>
   </div>
-  <div class="tabs"><button class="tab active" onclick="swTab('tracker',this)"><span class="tab-icon">📋</span>Tracker</button><button class="tab" onclick="swTab('charts',this)"><span class="tab-icon">📊</span>Grafieken</button><button class="tab" onclick="swTab('week',this)"><span class="tab-icon">📅</span>Week</button></div>
+  <!-- SETTINGS -->
+  <div class="wv" id="sV">
+    <div class="crd"><div class="ct">Dagelijks doel</div><div class="sr"><span class="sl">Calorieën (kcal)</span><input class="si" type="number" id="tInp" value="2000" onchange="updTgt(this.value)"></div></div>
+    <div class="crd"><div class="ct">AI (Gemini)</div><div class="sr" style="flex-direction:column;align-items:stretch;gap:8px"><span class="sl">API-key</span><div style="display:flex;gap:8px"><input type="password" id="keyInp" placeholder="Plak je Gemini API-key" style="flex:1;padding:8px;background:var(--bg3);border:1px solid var(--bdr);border-radius:var(--rs);color:var(--t1);font-family:inherit;font-size:13px;outline:none"><button onclick="saveKey()" style="background:var(--ac);color:#fff;border:none;padding:8px 14px;border-radius:var(--rs);font-family:inherit;font-size:13px;font-weight:600;cursor:pointer">Opslaan</button></div><div id="keyStatus" style="font-size:11px;color:var(--t3)"></div><div style="font-size:11px;color:var(--t3);line-height:1.5">Gratis: <a href="https://aistudio.google.com/apikey" target="_blank" style="color:var(--edc)">aistudio.google.com/apikey</a></div></div></div>
+    <div class="crd"><div class="ct">Data backup</div><div style="font-size:12px;color:var(--t3);margin-bottom:12px;line-height:1.5">Je data staat lokaal in je browser.</div><div style="display:flex;flex-direction:column;gap:8px"><button class="sbtn sb-img" style="min-width:100%;justify-content:center" onclick="expData()">📥 Exporteer (JSON)</button><button class="sbtn sb-img" style="min-width:100%;justify-content:center;background:var(--ok)" onclick="document.getElementById('impFile').click()">📤 Importeer (JSON)</button><input type="file" id="impFile" accept=".json" style="display:none" onchange="impData(event)"></div><div id="impStatus" style="font-size:12px;color:var(--t3);margin-top:8px;min-height:18px"></div><div style="margin-top:14px;border-top:1px solid var(--bdr);padding-top:14px"><button style="background:var(--dngbg);color:var(--dng);border:1px solid rgba(255,71,87,.3);padding:10px 16px;border-radius:var(--rs);font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;width:100%" onclick="clearAllData()">🗑️ Wis alle data</button></div></div>
+  </div>
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab active" onclick="swTab('tracker',this)"><span class="tab-icon">📋</span>Tracker</button>
+    <button class="tab" onclick="swTab('charts',this)"><span class="tab-icon">📊</span>Grafieken</button>
+    <button class="tab" onclick="swTab('analyse',this)"><span class="tab-icon">🧠</span>Analyse</button>
+    <button class="tab" onclick="swTab('settings',this)"><span class="tab-icon">⚙️</span>Instellingen</button>
+  </div>
   <div class="toast" id="tst"></div>
 </div>
 <canvas id="expCnv"></canvas>
 <script>
 const C=[{id:'ontbijt',nm:'Ontbijt',sh:'Ontbijt',col:'#ff9f43'},{id:'ochtend',nm:'Tussendoortje Ochtend',sh:'Ochtend',col:'#feca57'},{id:'lunch',nm:'Lunch',sh:'Lunch',col:'#48dbfb'},{id:'middag',nm:'Tussendoortje Middag',sh:'Middag',col:'#ff6b6b'},{id:'diner',nm:'Diner',sh:'Diner',col:'#a29bfe'},{id:'avond',nm:'Tussendoortje Avond',sh:'Avond',col:'#55efc4'}];
+// RI values (Voedingscentrum referentie-inname volwassene)
+const RI={kcal:2000,eiwit:50,koolh:260,vet:70,suikers:90,vezels:25,zout:6};
+const RI_COLORS={eiwit:'#48dbfb',koolh:'#ff9f43',vet:'#feca57',suikers:'#ff6b6b',vezels:'#55efc4',zout:'#a29bfe'};
+const RI_LABELS={eiwit:'Eiwit',koolh:'Koolh',vet:'Vet',suikers:'Suikers',vezels:'Vezels',zout:'Zout'};
 const DN=['Zondag','Maandag','Dinsdag','Woensdag','Donderdag','Vrijdag','Zaterdag'],DS=['Zo','Ma','Di','Wo','Do','Vr','Za'],MN=['januari','februari','maart','april','mei','juni','juli','augustus','september','oktober','november','december'],MS=['jan','feb','mrt','apr','mei','jun','jul','aug','sep','okt','nov','dec'];
 let cur=new Date(),calM=cur.getMonth(),calY=cur.getFullYear(),tgt=parseInt(localStorage.getItem('calTgt')||'2000');
-let openC=null,edC=null,edI=null,dlC=null,dlI=null,prd='dag',cFilt='all',exFilt='all',activeTab='tracker';
-
-const INIT={};
+let openC=null,edC=null,edI=null,dlC=null,dlI=null,prd='dag',cFilt='all',exFilt='all',activeTab='tracker',anPeriod='dag';
 const dkf=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
-function ld(){const s=localStorage.getItem('calD');if(s)return JSON.parse(s);const d={};for(const[k,v]of Object.entries(INIT))d[k]=v;return d;}
+function ld(){const s=localStorage.getItem('calD');if(s)return JSON.parse(s);return{};}
 function sd(d){localStorage.setItem('calD',JSON.stringify(d));}
 function gd(k){const d=ld();if(!d[k]){d[k]={};C.forEach(c=>d[k][c.id]=[]);sd(d);}return d[k];}
 function gt(k){const day=gd(k);let t=0;C.forEach(c=>{if(day[c.id])day[c.id].forEach(e=>t+=(e.kcal||0));});return t;}
 function gct(k,cid){const day=gd(k);return(day[cid]||[]).reduce((s,e)=>s+(e.kcal||0),0);}
 function gval(k,f){return f==='all'?gt(k):gct(k,f);}
-
-// === LOCAL FOOD DATABASE (for suggestions + fallback estimates) ===
-const FDB={'boterham':70,'boterham met kaas':160,'boterham met pindakaas':180,'boterham met hagelslag':140,'boterham met halvarine':90,'matze':40,'kleine matze':30,'ei':90,'gebakken ei':120,'gekookt ei':80,'omelet':180,'yoghurt':120,'volle yoghurt':140,'magere yoghurt':70,'vanillevla':130,'vla':130,'appel':52,'banaan':100,'sinaasappel':60,'peer':58,'melk':65,'karnemelk':40,'koffie':2,'koffie met melk':20,'thee':0,'rijst':130,'pasta':180,'macaroni':180,'spaghetti':180,'brood':70,'volkoren brood':80,'kaas':100,'plak kaas':70,'ham':30,'plak ham':30,'kip':165,'kipfilet':165,'gehakt':220,'worst':250,'grillworst':180,'tomaat':20,'komkommer':10,'aardappelen':200,'frites':300,'patat':300,'soep':80,'tomatensoep':60,'groentesoep':50,'koekje':50,'stroopwafel':130,'beschuit':30,'pindakaas':94,'hagelslag':50,'jam':40,'halvarine':20,'boter':35,'bier':150,'glas wijn':120,'cola':140,'sap':90,'sinaasappelsap':90,'chips':150,'zakje chips':270,'nootjes':160,'pizza':800,'punt pizza':270,'hamburger':350,'pannenkoek':190,'tosti':280,'havermout':150,'muesli':200,'cracker':35,'wrap':120,'chocolade eitje':30,'klein chocolade eitje':25,'groot chocolade ei':90,'chocoladereep':270,'stuk chocolade':55,'rijstwafel':35,'boterham met ei':170,'salade':50,'caesar salade':350,'komkommer':10,'sla':10,'wortel':35};
+function gmac(k,field){const day=gd(k);let t=0;C.forEach(c=>{if(day[c.id])day[c.id].forEach(e=>t+=(e[field]||0));});return t;}
+function r1(v){return v?((v%1===0)?v:v.toFixed(1)):0;}
+function hasMacros(e){return e.eiwit||e.koolh||e.vet||e.suikers||e.vezels||e.zout;}
+function fmtM(e){const p=[];if(e.eiwit)p.push(`<span>E ${r1(e.eiwit)}g</span>`);if(e.koolh)p.push(`<span>K ${r1(e.koolh)}g</span>`);if(e.vet)p.push(`<span>V ${r1(e.vet)}g</span>`);if(e.suikers)p.push(`<span>S ${r1(e.suikers)}g</span>`);if(e.vezels)p.push(`<span>Vz ${r1(e.vezels)}g</span>`);if(e.zout)p.push(`<span>Zo ${r1(e.zout)}g</span>`);return p.join('');}
+// Local food DB
+const FDB={'boterham':70,'boterham met kaas':160,'boterham met pindakaas':180,'boterham met hagelslag':140,'boterham met halvarine':90,'matze':40,'kleine matze':30,'ei':90,'gebakken ei':120,'gekookt ei':80,'omelet':180,'yoghurt':120,'volle yoghurt':140,'magere yoghurt':70,'vanillevla':130,'vla':130,'appel':52,'banaan':100,'sinaasappel':60,'peer':58,'melk':65,'karnemelk':40,'koffie':2,'koffie met melk':20,'thee':0,'rijst':130,'pasta':180,'macaroni':180,'spaghetti':180,'brood':70,'volkoren brood':80,'kaas':100,'plak kaas':70,'ham':30,'plak ham':30,'kip':165,'kipfilet':165,'gehakt':220,'worst':250,'grillworst':180,'tomaat':20,'komkommer':10,'aardappelen':200,'frites':300,'patat':300,'soep':80,'tomatensoep':60,'groentesoep':50,'koekje':50,'stroopwafel':130,'beschuit':30,'pindakaas':94,'hagelslag':50,'jam':40,'halvarine':20,'boter':35,'bier':150,'glas wijn':120,'cola':140,'sap':90,'chips':150,'zakje chips':270,'nootjes':160,'pizza':800,'punt pizza':270,'hamburger':350,'pannenkoek':190,'tosti':280,'havermout':150,'muesli':200,'cracker':35,'wrap':120,'chocolade eitje':30,'klein chocolade eitje':25,'groot chocolade ei':90,'chocoladereep':270,'stuk chocolade':55,'rijstwafel':35,'boterham met ei':170,'salade':50,'caesar salade':350,'wortel':35};
 function estK(txt){if(!txt)return 0;const t=txt.toLowerCase().trim();let tot=0,m=false;const ks=Object.keys(FDB).sort((a,b)=>b.length-a.length);t.split(/[,+]/).map(p=>p.trim()).filter(Boolean).forEach(part=>{let pm=false;const qm=part.match(/^(\d+)\s*x?\s*/);const q=qm?parseInt(qm[1]):1;const cp=qm?part.slice(qm[0].length):part;for(const k of ks){if(cp.includes(k)){tot+=FDB[k]*q;pm=true;m=true;break;}}if(!pm)for(const k of ks){const pl=k+(k.endsWith('e')?'n':k.endsWith('el')?'s':'en');if(cp.includes(pl)){tot+=FDB[k]*q;m=true;break;}}});return m?tot:0;}
 
-// ===== RENDER =====
+// === RENDER ===
 function updD(){
-  document.getElementById('dn').textContent=DN[cur.getDay()];
+  const dn=document.querySelector('.date-nav');
+  if(activeTab==='settings'||activeTab==='analyse'){dn.style.display='none';return;}
+  dn.style.display='flex';document.getElementById('dn').textContent=DN[cur.getDay()];
   if(activeTab==='charts'&&prd!=='dag'){
-    if(prd==='week'){
-      const wd=getWD(cur);
-      document.getElementById('dn').textContent='WEEK';
-      document.getElementById('df').textContent=`${wd[0].getDate()} ${MS[wd[0].getMonth()]} — ${wd[6].getDate()} ${MS[wd[6].getMonth()]} ${wd[6].getFullYear()}`;
-    }else if(prd==='maand'){
-      document.getElementById('dn').textContent='MAAND';
-      document.getElementById('df').textContent=`${MN[cur.getMonth()]} ${cur.getFullYear()}`;
-    }else if(prd==='jaar'){
-      document.getElementById('dn').textContent='JAAR';
-      document.getElementById('df').textContent=`${cur.getFullYear()}`;
-    }
-  } else {
-    document.getElementById('df').textContent=`${cur.getDate()} ${MN[cur.getMonth()]} ${cur.getFullYear()}`;
-  }
+    if(prd==='week'){const wd=getWD(cur);document.getElementById('dn').textContent='WEEK';document.getElementById('df').textContent=`${wd[0].getDate()} ${MS[wd[0].getMonth()]} — ${wd[6].getDate()} ${MS[wd[6].getMonth()]} ${wd[6].getFullYear()}`;}
+    else if(prd==='maand'){document.getElementById('dn').textContent='MAAND';document.getElementById('df').textContent=`${MN[cur.getMonth()]} ${cur.getFullYear()}`;}
+    else if(prd==='jaar'){document.getElementById('dn').textContent='JAAR';document.getElementById('df').textContent=`${cur.getFullYear()}`;}
+  } else {document.getElementById('df').textContent=`${cur.getDate()} ${MN[cur.getMonth()]} ${cur.getFullYear()}`;}
 }
 function render(){
   const key=dkf(cur),day=gd(key);let totK=0;const con=document.getElementById('cats');con.innerHTML='';
-  C.forEach(cat=>{const ents=day[cat.id]||[];const ct=ents.reduce((s,e)=>s+(e.kcal||0),0);totK+=ct;const isO=openC===cat.id;
-    const card=document.createElement('div');card.className='cc'+(isO?' open':'');
+  let tm={eiwit:0,koolh:0,vet:0,suikers:0,vezels:0,zout:0};
+  C.forEach(cat=>{const ents=day[cat.id]||[];const ct=ents.reduce((s,e)=>s+(e.kcal||0),0);totK+=ct;
+    ents.forEach(e=>{for(const m in tm)tm[m]+=(e[m]||0);});
+    const isO=openC===cat.id;const card=document.createElement('div');card.className='cc'+(isO?' open':'');
     card.innerHTML=`<div class="ch" onclick="togC('${cat.id}')"><div class="cl"><div class="cdot" style="background:${cat.col}"></div><span class="cn">${cat.nm}</span></div><span class="ck">${ct>0?ct+' kcal':'—'}</span></div>
-      <div class="cb">${ents.map((e,i)=>`<div class="er"><span class="ef">${e.food}</span><span class="ec">${e.kcal} kcal</span><div class="ea"><button class="ab be" onclick="opEd('${cat.id}',${i})">✎</button><button class="ab bd" onclick="opDl('${cat.id}',${i})">✕</button></div></div>`).join('')}
+      <div class="cb">${ents.map((e,i)=>`<div class="er"><div class="er-top"><span class="ef">${e.food}</span><span class="ec">${e.kcal} kcal</span><div class="ea"><button class="ab be" onclick="opEd('${cat.id}',${i})">✎</button><button class="ab bd" onclick="opDl('${cat.id}',${i})">✕</button></div></div>${hasMacros(e)?`<div class="er-macros">${fmtM(e)}</div>`:''}</div>`).join('')}
         <div class="afs"><div class="afr"><div class="ac-wrap" style="flex:1"><input type="text" placeholder="Wat gegeten?" id="fi_${cat.id}" autocomplete="off" oninput="acShow('${cat.id}')" onkeydown="acKey(event,'${cat.id}')" onfocus="acShow('${cat.id}')"><div class="ac-list" id="ac_${cat.id}"></div></div><input type="number" class="ci" placeholder="kcal" id="ci_${cat.id}" onkeydown="if(event.key==='Enter')addE('${cat.id}')"><button class="adb" id="ab_${cat.id}" onclick="addE('${cat.id}')">+</button></div>
         <div class="add-status" id="st_${cat.id}"></div>
-        <div class="ail"><button class="ailb" onclick="aiLook('${cat.id}')">🔍 Calorieën opzoeken (AI)</button></div>
-        <div class="aih">Typ eten en druk +. AI schat automatisch calorieën. Of klik opzoeken om eerst te checken.</div></div></div>`;
+        <div class="ail"><button class="ailb" onclick="aiLook('${cat.id}')">🔍 Voeding opzoeken (AI)</button></div>
+        <div class="aih">AI schat kcal en voedingswaarden automatisch.</div></div></div>`;
     con.appendChild(card);});
-  document.getElementById('totK').textContent=totK;const pct=Math.min(100,Math.round((totK/tgt)*100));
+  document.getElementById('totK').textContent=totK;
+  const pct=Math.min(100,Math.round((totK/tgt)*100));
   document.getElementById('tFill').style.width=pct+'%';document.getElementById('tPct').textContent=pct+'%';document.getElementById('tVal').textContent=tgt;
   document.getElementById('tFill').style.background=totK>tgt?'linear-gradient(90deg,var(--warn),var(--ac))':'linear-gradient(90deg,var(--ok),var(--ac))';
+  // RI macro bars
+  const mb=document.getElementById('mBars');mb.innerHTML='';
+  for(const[k,label] of Object.entries(RI_LABELS)){
+    const val=tm[k]||0;const ri=RI[k];const pctM=Math.min(150,Math.round((val/ri)*100));
+    const isMax=k==='suikers'||k==='zout';
+    const color=pctM>100?(isMax?'var(--dng)':'var(--ok)'):RI_COLORS[k];
+    mb.innerHTML+=`<div class="mb-row"><span class="mb-label">${label}</span><div class="mb-barw"><div class="mb-bar" style="width:${Math.min(pctM,100)}%;background:${color}"></div></div><span class="mb-val">${r1(val)}/${ri}g</span></div>`;
+  }
 }
 function togC(id){openC=openC===id?null:id;render();}
 
-// === GEMINI AI CALORIE LOOKUP (15s timeout) ===
+// === GEMINI AI ===
 function getGeminiKey(){return localStorage.getItem('geminiKey')||'';}
 function setGeminiKey(k){localStorage.setItem('geminiKey',k);}
-async function aiK(food){
+async function aiCall(prompt,maxTok=500){
+  const gk=getGeminiKey();if(!gk)return{ok:false,msg:'Geen API-key'};
   try{
-    const ctrl=new AbortController();
-    const timer=setTimeout(()=>ctrl.abort(),15000);
-    const gk=getGeminiKey();if(!gk)return {code:-3,msg:'Geen API-key'};
+    const ctrl=new AbortController();const timer=setTimeout(()=>ctrl.abort(),20000);
     const r=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${gk}`,{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      signal:ctrl.signal,
-      body:JSON.stringify({contents:[{parts:[{text:`Je bent een voedingsexpert. Schat het totaal aantal calorieën (kcal) voor de volgende Nederlandse maaltijd of snack. Houd rekening met typische Nederlandse portiegroottes. Als er "klein" of "groot" bij staat, pas dan je schatting aan. Geef ALLEEN een getal terug, niets anders. Geen tekst, geen uitleg, puur het getal.\n\nEten: ${food}`}]}]})
-    });
+      method:'POST',headers:{'Content-Type':'application/json'},signal:ctrl.signal,
+      body:JSON.stringify({contents:[{parts:[{text:prompt}]}]})});
     clearTimeout(timer);
-    if(!r.ok){const errBody=await r.text().catch(()=>'');return {code:-1,msg:`HTTP ${r.status}: ${errBody.substring(0,100)}`};}
-    const d=await r.json();
-    const txt=d.candidates?.[0]?.content?.parts?.[0]?.text||'';
-    const n=parseInt(txt.replace(/[^0-9]/g,''));
-    if(n&&n>0&&n<15000)return {code:n,msg:'ok'};
-    return {code:-1,msg:'Geen geldig getal in antwoord: '+txt.substring(0,50)};
-  }catch(e){
-    if(e.name==='AbortError')return {code:-2,msg:'Timeout na 15s'};
-    return {code:-2,msg:e.name+': '+e.message};
-  }
+    if(!r.ok){const err=await r.text().catch(()=>'');return{ok:false,msg:`HTTP ${r.status}: ${err.substring(0,100)}`};}
+    const d=await r.json();let txt=d.candidates?.[0]?.content?.parts?.[0]?.text||'';
+    return{ok:true,text:txt};
+  }catch(e){return{ok:false,msg:e.name==='AbortError'?'Timeout':'Fout: '+e.message};}
+}
+async function aiNutrition(food){
+  const r=await aiCall(`Je bent een voedingsexpert. Schat de voedingswaarden voor de volgende Nederlandse maaltijd of snack. Houd rekening met typische Nederlandse portiegroottes. Als er "klein" of "groot" bij staat, pas je schatting aan.\n\nGeef je antwoord als JSON in exact dit formaat, niets anders, geen markdown, geen backticks:\n{"kcal":0,"eiwit":0,"koolh":0,"vet":0,"suikers":0,"vezels":0,"zout":0}\n\nEten: ${food}`);
+  if(!r.ok)return{ok:false,msg:r.msg};
+  let txt=r.text.replace(/```json\s*/g,'').replace(/```\s*/g,'').trim();
+  try{const obj=JSON.parse(txt);if(obj.kcal>0&&obj.kcal<15000)return{ok:true,data:obj};}catch(e){}
+  const n=parseInt(txt.replace(/[^0-9]/g,''));
+  if(n>0&&n<15000)return{ok:true,data:{kcal:n}};
+  return{ok:false,msg:'Ongeldig antwoord'};
 }
 
-// === ADD ENTRY: AI-first, local DB fallback ===
+// === ADD / EDIT / DELETE ===
 async function addE(cid){
   const fi=document.getElementById('fi_'+cid),ci=document.getElementById('ci_'+cid);
   const food=fi.value.trim();if(!food)return;
-  const btn=document.getElementById('ab_'+cid);
-  const st=document.getElementById('st_'+cid);
+  const btn=document.getElementById('ab_'+cid),st=document.getElementById('st_'+cid);
   let kcal=parseInt(ci.value)||0;
-
-  // User already entered kcal manually: just save
-  if(kcal>0){svE(cid,food,kcal);toast(`${food} — ${kcal} kcal`);acHide(cid);return;}
-
-  // No kcal: ask AI first
+  if(kcal>0){svE(cid,{food,kcal});toast(`${food} — ${kcal} kcal`);acHide(cid);return;}
   btn.disabled=true;btn.textContent='…';
-
-  if(!getGeminiKey()){
-    st.textContent='Geen API-key ingesteld (zie Week > Instellingen)';
-  } else {
-    st.innerHTML='<span class="spinner"></span> AI schat calorieën...';
-  }
-
-  const aiResult=await aiK(food);
-
-  if(aiResult.code>0){
-    btn.disabled=false;btn.textContent='+';st.textContent='';
-    svE(cid,food,aiResult.code);toast(`${food} — ${aiResult.code} kcal (AI)`);acHide(cid);return;
-  }
-
-  // AI failed: show reason and try local DB
-  if(aiResult.code===-3){st.textContent='Geen API-key. Lokale schatting...';}
-  else{st.textContent='AI fout: '+aiResult.msg+'. Lokale schatting...';}
-  console.log('AI fout:',aiResult.msg);
-
-  kcal=estK(food);
-  btn.disabled=false;btn.textContent='+';
-
-  if(kcal>0){
-    ci.value=kcal;
-    st.textContent='⚠️ Lokale schatting: '+kcal+' kcal — controleer en druk +';
-    setTimeout(()=>{if(st)st.textContent='';},5000);
-    return;
-  }
-
-  // Nothing found
-  st.textContent='Niet gevonden. Vul kcal handmatig in.';
-  setTimeout(()=>{if(st)st.textContent='';},4000);
-  ci.focus();
+  if(!getGeminiKey()){st.textContent='Geen API-key (zie Instellingen)';}else{st.innerHTML='<span class="spinner"></span> AI schat voedingswaarden...';}
+  const r=await aiNutrition(food);
+  if(r.ok&&r.data){btn.disabled=false;btn.textContent='+';st.textContent='';svE(cid,{food,...r.data});toast(`${food} — ${r.data.kcal} kcal (AI)`);acHide(cid);return;}
+  st.textContent='AI: '+(r.msg||'fout');kcal=estK(food);btn.disabled=false;btn.textContent='+';
+  if(kcal>0){ci.value=kcal;st.textContent='⚠️ Lokaal: '+kcal+' kcal';setTimeout(()=>st.textContent='',5000);return;}
+  st.textContent='Niet gevonden, vul kcal in';setTimeout(()=>st.textContent='',4000);ci.focus();
 }
-function svE(cid,food,kcal){const key=dkf(cur),d=ld();if(!d[key]){d[key]={};C.forEach(c=>d[key][c.id]=[]);}if(!d[key][cid])d[key][cid]=[];d[key][cid].push({food,kcal});sd(d);render();}
-
-// === AI LOOKUP BUTTON (fills kcal without saving) ===
+function svE(cid,entry){const key=dkf(cur),d=ld();if(!d[key]){d[key]={};C.forEach(c=>d[key][c.id]=[]);}if(!d[key][cid])d[key][cid]=[];d[key][cid].push(entry);sd(d);render();}
 async function aiLook(cid){
   const fi=document.getElementById('fi_'+cid),ci=document.getElementById('ci_'+cid);
-  const food=fi.value.trim();
-  if(!food){toast('Voer eerst eten in');return;}
-  const st=document.getElementById('st_'+cid);
-  st.innerHTML='<span class="spinner"></span> AI schat calorieën...';
-  const result=await aiK(food);
-  console.log('AI result:',result);
-  if(result.code>0){ci.value=result.code;st.textContent='';toast(`AI schatting: ${result.code} kcal`);}
-  else{
-    st.textContent='AI fout: '+result.msg;
-    setTimeout(()=>{
-      const local=estK(food);
-      if(local>0){ci.value=local;st.textContent='⚠️ Lokale schatting';setTimeout(()=>st.textContent='',3000);toast(`Lokaal: ${local} kcal`);}
-      else{st.textContent='Niet gevonden, vul handmatig in';setTimeout(()=>st.textContent='',3000);}
-    },2000);
-  }
+  const food=fi.value.trim();if(!food){toast('Voer eerst eten in');return;}
+  const st=document.getElementById('st_'+cid);st.innerHTML='<span class="spinner"></span> AI zoekt op...';
+  const r=await aiNutrition(food);
+  if(r.ok&&r.data){ci.value=r.data.kcal;ci.dataset.macros=JSON.stringify(r.data);st.textContent='';toast(`AI: ${r.data.kcal} kcal`);}
+  else{st.textContent='AI: '+(r.msg||'fout');const local=estK(food);if(local>0){ci.value=local;setTimeout(()=>st.textContent='⚠️ Lokaal',1500);}setTimeout(()=>st.textContent='',4000);}
 }
-
-// === AUTOCOMPLETE ===
-function acShow(cid){
-  const fi=document.getElementById('fi_'+cid);
-  const ac=document.getElementById('ac_'+cid);
-  const val=fi.value.toLowerCase().trim();
-  if(val.length<2){ac.classList.remove('show');return;}
-
-  // Search FDB + previously entered foods
-  const results=[];
-  const seen=new Set();
-
-  // Search local database
-  for(const[name,kcal] of Object.entries(FDB)){
-    if(name.includes(val)&&!seen.has(name)){results.push({name,kcal});seen.add(name);}
-  }
-
-  // Search user history for matching foods
-  const data=ld();
-  for(const day of Object.values(data)){
-    for(const cat of Object.values(day)){
-      if(!Array.isArray(cat))continue;
-      for(const e of cat){
-        const fn=e.food.toLowerCase();
-        if(fn.includes(val)&&!seen.has(fn)&&e.kcal>0){
-          results.push({name:e.food,kcal:e.kcal,hist:true});
-          seen.add(fn);
-        }
-      }
-    }
-  }
-
-  if(!results.length){ac.classList.remove('show');return;}
-
-  // Sort: exact start matches first, then contains, max 8 results
-  results.sort((a,b)=>{
-    const aS=a.name.toLowerCase().startsWith(val)?0:1;
-    const bS=b.name.toLowerCase().startsWith(val)?0:1;
-    return aS-bS;
-  });
-
-  ac.innerHTML=results.slice(0,8).map((r,i)=>
-    `<div class="ac-item" onmousedown="acPick('${cid}',${i})">
-      <span class="ac-food">${r.hist?'📋 ':''}${r.name}</span>
-      <span class="ac-kcal">${r.kcal} kcal</span>
-    </div>`
-  ).join('');
-  ac._results=results.slice(0,8);
-  ac.classList.add('show');
-}
-
-function acPick(cid,idx){
-  const ac=document.getElementById('ac_'+cid);
-  const r=ac._results[idx];
-  if(!r)return;
-  document.getElementById('fi_'+cid).value=r.name;
-  document.getElementById('ci_'+cid).value=r.kcal;
-  ac.classList.remove('show');
-}
-
-function acHide(cid){
-  const ac=document.getElementById('ac_'+cid);
-  if(ac)ac.classList.remove('show');
-}
-
-function acKey(e,cid){
-  if(e.key==='Enter'){
-    acHide(cid);
-    addE(cid);
-  } else if(e.key==='Escape'){
-    acHide(cid);
-  }
-}
-
-// Close autocomplete when clicking outside
-document.addEventListener('click',function(e){
-  if(!e.target.closest('.ac-wrap')){
-    document.querySelectorAll('.ac-list').forEach(l=>l.classList.remove('show'));
-  }
-});
-
-function opEd(c,i){edC=c;edI=i;const d=ld(),e=d[dkf(cur)]?.[c]?.[i];if(!e)return;document.getElementById('edF').value=e.food;document.getElementById('edK').value=e.kcal;document.getElementById('edOv').classList.add('active');}
+function opEd(c,i){edC=c;edI=i;const d=ld(),e=d[dkf(cur)]?.[c]?.[i];if(!e)return;
+  document.getElementById('edF').value=e.food;document.getElementById('edK').value=e.kcal||'';
+  document.getElementById('edP').value=e.eiwit||'';document.getElementById('edC').value=e.koolh||'';
+  document.getElementById('edFt').value=e.vet||'';document.getElementById('edS').value=e.suikers||'';
+  document.getElementById('edFi').value=e.vezels||'';document.getElementById('edSa').value=e.zout||'';
+  document.getElementById('edOv').classList.add('active');}
 function clEd(){document.getElementById('edOv').classList.remove('active');edC=null;edI=null;}
-function svEd(){if(edC===null)return;const f=document.getElementById('edF').value.trim(),k=parseInt(document.getElementById('edK').value)||0;if(!f)return;const key=dkf(cur),d=ld();if(d[key]?.[edC]?.[edI]){d[key][edC][edI]={food:f,kcal:k};sd(d);render();toast('Bijgewerkt');}clEd();}
+function svEd(){if(edC===null)return;const f=document.getElementById('edF').value.trim();if(!f)return;
+  const entry={food:f,kcal:parseFloat(document.getElementById('edK').value)||0,eiwit:parseFloat(document.getElementById('edP').value)||0,koolh:parseFloat(document.getElementById('edC').value)||0,vet:parseFloat(document.getElementById('edFt').value)||0,suikers:parseFloat(document.getElementById('edS').value)||0,vezels:parseFloat(document.getElementById('edFi').value)||0,zout:parseFloat(document.getElementById('edSa').value)||0};
+  const key=dkf(cur),d=ld();if(d[key]?.[edC]?.[edI]){d[key][edC][edI]=entry;sd(d);render();toast('Bijgewerkt');}clEd();}
 function opDl(c,i){dlC=c;dlI=i;const d=ld(),e=d[dkf(cur)]?.[c]?.[i];if(!e)return;document.getElementById('cfN').textContent=e.food+' ('+e.kcal+' kcal)';document.getElementById('cfOv').classList.add('active');}
 function clCf(){document.getElementById('cfOv').classList.remove('active');dlC=null;dlI=null;}
 function cfDel(){if(dlC===null)return;const key=dkf(cur),d=ld();if(d[key]?.[dlC]){d[key][dlC].splice(dlI,1);sd(d);render();toast('Verwijderd');}clCf();}
-function chgDate(o){
-  if(activeTab==='charts'){
-    if(prd==='week'){cur.setDate(cur.getDate()+(o*7));}
-    else if(prd==='maand'){cur.setMonth(cur.getMonth()+o);}
-    else if(prd==='jaar'){cur.setFullYear(cur.getFullYear()+o);}
-    else{cur.setDate(cur.getDate()+o);}
-    openC=null;updD();rCh();
-  } else {
-    cur.setDate(cur.getDate()+o);openC=null;updD();render();
-    if(activeTab==='week')rWk();
-  }
-}
+
+// === DATE NAV ===
+function chgDate(o){if(activeTab==='charts'){if(prd==='week')cur.setDate(cur.getDate()+(o*7));else if(prd==='maand')cur.setMonth(cur.getMonth()+o);else if(prd==='jaar')cur.setFullYear(cur.getFullYear()+o);else cur.setDate(cur.getDate()+o);openC=null;updD();rCh();}else{cur.setDate(cur.getDate()+o);openC=null;updD();render();}}
+function goToday(){cur=new Date();openC=null;updD();render();if(activeTab==='charts')rCh();}
 function togCal(){const el=document.getElementById('calOv');el.classList.toggle('active');if(el.classList.contains('active')){calM=cur.getMonth();calY=cur.getFullYear();rCal();}}
 function chgCalM(o){calM+=o;if(calM>11){calM=0;calY++;}if(calM<0){calM=11;calY--;}rCal();}
 function rCal(){document.getElementById('calT').textContent=MN[calM]+' '+calY;const g=document.getElementById('calG');g.innerHTML='';['Ma','Di','Wo','Do','Vr','Za','Zo'].forEach(d=>{const l=document.createElement('div');l.className='dl';l.textContent=d;g.appendChild(l);});let s=new Date(calY,calM,1).getDay()-1;if(s<0)s=6;const dim=new Date(calY,calM+1,0).getDate(),pd=new Date(calY,calM,0).getDate();const td=new Date(),tk=dkf(td),sk=dkf(cur),data=ld();for(let i=s-1;i>=0;i--){const c=document.createElement('div');c.className='cd om';c.textContent=pd-i;g.appendChild(c);}for(let d=1;d<=dim;d++){const c=document.createElement('div'),dt=new Date(calY,calM,d),k=dkf(dt);let cls='cd';if(k===tk)cls+=' today';if(k===sk)cls+=' sel';if(data[k]&&gt(k)>0)cls+=' hd';c.className=cls;c.textContent=d;c.onclick=()=>{cur=new Date(calY,calM,d);openC=null;togCal();updD();render();};g.appendChild(c);}const tc=s+dim,rem=(7-(tc%7))%7;for(let i=1;i<=rem;i++){const c=document.createElement('div');c.className='cd om';c.textContent=i;g.appendChild(c);}}
 
-// ===== CHARTS =====
+// === AUTOCOMPLETE ===
+function acShow(cid){const fi=document.getElementById('fi_'+cid),ac=document.getElementById('ac_'+cid);const val=fi.value.toLowerCase().trim();if(val.length<2){ac.classList.remove('show');return;}
+  const results=[],seen=new Set();for(const[name,kcal] of Object.entries(FDB)){if(name.includes(val)&&!seen.has(name)){results.push({name,kcal});seen.add(name);}}
+  const data=ld();for(const day of Object.values(data)){for(const cat of Object.values(day)){if(!Array.isArray(cat))continue;for(const e of cat){const fn=e.food.toLowerCase();if(fn.includes(val)&&!seen.has(fn)&&e.kcal>0){results.push({name:e.food,kcal:e.kcal,hist:true});seen.add(fn);}}}}
+  if(!results.length){ac.classList.remove('show');return;}results.sort((a,b)=>(a.name.toLowerCase().startsWith(val)?0:1)-(b.name.toLowerCase().startsWith(val)?0:1));
+  ac.innerHTML=results.slice(0,8).map((r,i)=>`<div class="ac-item" onmousedown="acPick('${cid}',${i})"><span class="ac-food">${r.hist?'📋 ':''}${r.name}</span><span class="ac-kcal">${r.kcal} kcal</span></div>`).join('');
+  ac._results=results.slice(0,8);ac.classList.add('show');}
+function acPick(cid,idx){const ac=document.getElementById('ac_'+cid),r=ac._results[idx];if(!r)return;document.getElementById('fi_'+cid).value=r.name;document.getElementById('ci_'+cid).value=r.kcal;ac.classList.remove('show');}
+function acHide(cid){const ac=document.getElementById('ac_'+cid);if(ac)ac.classList.remove('show');}
+function acKey(e,cid){if(e.key==='Enter'){acHide(cid);addE(cid);}else if(e.key==='Escape')acHide(cid);}
+document.addEventListener('click',e=>{if(!e.target.closest('.ac-wrap'))document.querySelectorAll('.ac-list').forEach(l=>l.classList.remove('show'));});
+
+// === CHARTS ===
 function getWD(d){const dd=new Date(d),day=dd.getDay(),diff=dd.getDate()-day+(day===0?-6:1);const mon=new Date(dd.setDate(diff)),dates=[];for(let i=0;i<7;i++){const x=new Date(mon);x.setDate(mon.getDate()+i);dates.push(x);}return dates;}
 function getMD(d){const y=d.getFullYear(),m=d.getMonth(),dim=new Date(y,m+1,0).getDate(),dates=[];for(let i=1;i<=dim;i++)dates.push(new Date(y,m,i));return dates;}
 function setPrd(p){prd=p;document.querySelectorAll('.pt').forEach(t=>t.classList.remove('active'));document.querySelector(`.pt[onclick="setPrd('${p}')"]`).classList.add('active');updD();rCh();}
 function rFC(){const con=document.getElementById('fCh');con.innerHTML='';const mk=(id,nm,col)=>{const ch=document.createElement('div');ch.className='chip'+(cFilt===id?' act':'');if(cFilt===id)ch.style.cssText=id==='all'?'background:var(--ac);color:#fff':`background:${col};color:#000`;ch.textContent=nm;ch.onclick=()=>{cFilt=id;rCh();};con.appendChild(ch);};mk('all','Totaal','');C.forEach(c=>mk(c.id,c.sh,c.col));}
-function rCh(){
-  rFC();rEC();const area=document.getElementById('chArea');area.innerHTML='';
-  if(prd==='dag')rDayC(area);else if(prd==='week')rBarP(area,getWD(cur),d=>DS[d.getDay()]);
-  else if(prd==='maand')rBarP(area,getMD(cur),d=>d.getDate().toString());else rYC(area);
+function rCh(){rFC();rEC();const area=document.getElementById('chArea');area.innerHTML='';
+  if(prd==='dag')rDayC(area);else if(prd==='week')rBarP(area,getWD(cur),d=>DS[d.getDay()]);else if(prd==='maand')rBarP(area,getMD(cur),d=>d.getDate().toString());else rYC(area);
   if(prd==='dag'){document.getElementById('exFrom').value=dkf(cur);document.getElementById('exTo').value=dkf(cur);}
   else if(prd==='week'){const wd=getWD(cur);document.getElementById('exFrom').value=dkf(wd[0]);document.getElementById('exTo').value=dkf(wd[6]);}
   else if(prd==='maand'){const md=getMD(cur);document.getElementById('exFrom').value=dkf(md[0]);document.getElementById('exTo').value=dkf(md[md.length-1]);}
-  else{document.getElementById('exFrom').value=cur.getFullYear()+'-01-01';document.getElementById('exTo').value=cur.getFullYear()+'-12-31';}
-}
+  else{document.getElementById('exFrom').value=cur.getFullYear()+'-01-01';document.getElementById('exTo').value=cur.getFullYear()+'-12-31';}}
 function rDayC(area){
   const key=dkf(cur),day=gd(key);const crd=document.createElement('div');crd.className='crd';const title=document.createElement('div');title.className='ct';title.textContent=DN[cur.getDay()]+' '+cur.getDate()+' '+MN[cur.getMonth()];crd.appendChild(title);
   if(cFilt==='all'){const tots=C.map(c=>({...c,kcal:(day[c.id]||[]).reduce((s,e)=>s+(e.kcal||0),0)}));const mx=Math.max(...tots.map(t=>t.kcal),1);const grand=tots.reduce((s,t)=>s+t.kcal,0);
     const bk=document.createElement('div');bk.className='day-bk';tots.forEach(t=>{const row=document.createElement('div');row.className='day-bk-row';row.innerHTML=`<span class="day-bk-name" style="color:${t.col}">${t.sh}</span><div class="day-bk-barw"><div class="day-bk-bar" style="width:${(t.kcal/mx)*100}%;background:${t.col}"></div></div><span class="day-bk-val">${t.kcal}</span>`;bk.appendChild(row);});crd.appendChild(bk);
     const tot=document.createElement('div');tot.style.cssText='margin-top:12px;text-align:right;font-weight:700;font-size:16px';tot.textContent='Totaal: '+grand+' kcal';crd.appendChild(tot);
     // Donut
-    const dC=document.createElement('div');dC.className='crd';dC.style.marginTop='12px';const dT=document.createElement('div');dT.className='ct';dT.textContent='Verdeling';dC.appendChild(dT);
+    const dC=document.createElement('div');dC.className='crd';dC.style.marginTop='12px';dC.innerHTML='<div class="ct">Verdeling</div>';
     const dc=document.createElement('div');dc.className='dnt-c';const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('class','dnt-svg');svg.setAttribute('viewBox','0 0 130 130');
-    if(grand===0)svg.innerHTML=`<circle cx="65" cy="65" r="46" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="18"/><text x="65" y="69" text-anchor="middle" fill="#6a6a8e" font-size="12">0</text>`;
+    if(grand===0)svg.innerHTML='<circle cx="65" cy="65" r="46" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="18"/><text x="65" y="69" text-anchor="middle" fill="#6a6a8e" font-size="12">0</text>';
     else{let sa=-90;tots.forEach(t=>{if(!t.kcal)return;const pct=t.kcal/grand,ang=pct*360,ea=sa+ang,sr=sa*Math.PI/180,er=ea*Math.PI/180,cx=65,cy=65,r=46;const p=document.createElementNS('http://www.w3.org/2000/svg','path');if(pct>=.999)p.setAttribute('d',`M ${cx+r},${cy} A ${r},${r} 0 1,1 ${cx-r},${cy} A ${r},${r} 0 1,1 ${cx+r},${cy}`);else{const x1=cx+r*Math.cos(sr),y1=cy+r*Math.sin(sr),x2=cx+r*Math.cos(er),y2=cy+r*Math.sin(er);p.setAttribute('d',`M ${x1},${y1} A ${r},${r} 0 ${ang>180?1:0},1 ${x2},${y2}`);}p.setAttribute('fill','none');p.setAttribute('stroke',t.col);p.setAttribute('stroke-width','18');svg.appendChild(p);sa=ea;});
       svg.innerHTML+=`<text x="65" y="61" text-anchor="middle" fill="#eaeaea" font-size="16" font-weight="700">${grand}</text><text x="65" y="77" text-anchor="middle" fill="#6a6a8e" font-size="10">kcal</text>`;}
-    dc.appendChild(svg);const leg=document.createElement('div');leg.className='dnt-leg';tots.forEach(t=>{if(!t.kcal)return;const li=document.createElement('div');li.className='li';li.innerHTML=`<div class="ld" style="background:${t.col}"></div><span class="ln">${t.sh}</span><span class="lv">${t.kcal}</span>`;leg.appendChild(li);});dc.appendChild(leg);dC.appendChild(dc);area.appendChild(crd);area.appendChild(dC);
-  } else {const cat=C.find(c=>c.id===cFilt);const ents=day[cFilt]||[];const catT=ents.reduce((s,e)=>s+(e.kcal||0),0);const bk=document.createElement('div');bk.className='day-bk';if(!ents.length)bk.innerHTML=`<div style="color:var(--t3);font-size:13px;padding:10px 0">Geen invoer voor ${cat.nm}</div>`;else ents.forEach(e=>{const row=document.createElement('div');row.className='day-bk-row';row.innerHTML=`<span class="day-bk-name" style="color:${cat.col};width:auto;flex:1;font-size:12px">${e.food}</span><span class="day-bk-val">${e.kcal}</span>`;bk.appendChild(row);});crd.appendChild(bk);const tot=document.createElement('div');tot.style.cssText='margin-top:12px;text-align:right;font-weight:700;font-size:16px;color:'+cat.col;tot.textContent=cat.sh+': '+catT+' kcal';crd.appendChild(tot);area.appendChild(crd);}
-}
+    dc.appendChild(svg);const leg=document.createElement('div');leg.className='dnt-leg';tots.forEach(t=>{if(!t.kcal)return;leg.innerHTML+=`<div class="li"><div class="ld" style="background:${t.col}"></div><span class="ln">${t.sh}</span><span class="lv">${t.kcal}</span></div>`;});dc.appendChild(leg);dC.appendChild(dc);area.appendChild(crd);area.appendChild(dC);
+  } else {const cat=C.find(c=>c.id===cFilt);const ents=day[cFilt]||[];const catT=ents.reduce((s,e)=>s+(e.kcal||0),0);const bk=document.createElement('div');bk.className='day-bk';if(!ents.length)bk.innerHTML=`<div style="color:var(--t3);font-size:13px;padding:10px 0">Geen invoer</div>`;else ents.forEach(e=>{bk.innerHTML+=`<div class="day-bk-row"><span class="day-bk-name" style="color:${cat.col};width:auto;flex:1;font-size:12px">${e.food}</span><span class="day-bk-val">${e.kcal}</span></div>`;});crd.appendChild(bk);crd.innerHTML+=`<div style="margin-top:12px;text-align:right;font-weight:700;font-size:16px;color:${cat.col}">${cat.sh}: ${catT} kcal</div>`;area.appendChild(crd);}}
 function rBarP(area,dates,lblFn){
   const crd=document.createElement('div');crd.className='crd';const title=document.createElement('div');title.className='ct';
   if(prd==='week'){const wd=dates;title.textContent=`Week ${DS[wd[0].getDay()]} ${wd[0].getDate()} ${MS[wd[0].getMonth()]} — ${DS[wd[6].getDay()]} ${wd[6].getDate()} ${MS[wd[6].getMonth()]}`;}else title.textContent=MN[cur.getMonth()]+' '+cur.getFullYear();crd.appendChild(title);
   const bc=document.createElement('div');bc.className='bc';const vals=dates.map(d=>gval(dkf(d),cFilt));const mx=Math.max(...vals,cFilt==='all'?tgt:100,1);const catObj=C.find(c=>c.id===cFilt);
   dates.forEach((d,i)=>{const col=document.createElement('div');col.className='bc-col';const v=vals[i];const h=(v/mx)*100;const isT=dkf(d)===dkf(new Date());
-    if(cFilt==='all'&&v>0){let sH='';C.forEach(cat=>{const cv=gct(dkf(d),cat.id);if(cv>0){const sp=(cv/v)*100;sH+=`<div class="stk-s" style="height:${sp}%;background:${cat.col}"></div>`;}});col.innerHTML=`<div class="bc-val">${v>0?v:''}</div><div class="stk" style="height:${Math.max(h,1)}%">${sH}</div><div class="bc-lbl">${lblFn(d)}</div>`;}
-    else{const bg=isT?(catObj?.col||'var(--ac)'):(catObj?.col||'rgba(255,255,255,.1)');col.innerHTML=`<div class="bc-val">${v>0?v:''}</div><div class="bc-bar" style="height:${Math.max(h,1)}%;background:${bg};opacity:${isT?1:.6}"></div><div class="bc-lbl">${lblFn(d)}</div>`;}bc.appendChild(col);});crd.appendChild(bc);
-  const sum=vals.reduce((a,b)=>a+b,0);const filledDays=vals.filter(v=>v>0).length;const avg=filledDays?Math.round(sum/filledDays):0;const sm=document.createElement('div');sm.style.cssText='display:flex;justify-content:space-between;font-size:13px;color:var(--t2);margin-top:4px';sm.innerHTML=`<span>Totaal: <strong style="color:var(--t1)">${sum}</strong> kcal</span><span>Gem: <strong style="color:var(--t1)">${avg}</strong> kcal/dag (${filledDays} ${filledDays===1?'dag':'dagen'})</span>`;crd.appendChild(sm);area.appendChild(crd);
-}
+    if(cFilt==='all'&&v>0){let sH='';C.forEach(cat=>{const cv=gct(dkf(d),cat.id);if(cv>0)sH+=`<div class="stk-s" style="height:${(cv/v)*100}%;background:${cat.col}"></div>`;});col.innerHTML=`<div class="bc-val">${v||''}</div><div class="stk" style="height:${Math.max(h,1)}%">${sH}</div><div class="bc-lbl">${lblFn(d)}</div>`;}
+    else{const bg=isT?(catObj?.col||'var(--ac)'):(catObj?.col||'rgba(255,255,255,.1)');col.innerHTML=`<div class="bc-val">${v||''}</div><div class="bc-bar" style="height:${Math.max(h,1)}%;background:${bg};opacity:${isT?1:.6}"></div><div class="bc-lbl">${lblFn(d)}</div>`;}bc.appendChild(col);});crd.appendChild(bc);
+  const sum=vals.reduce((a,b)=>a+b,0);const fd=vals.filter(v=>v>0).length;const avg=fd?Math.round(sum/fd):0;
+  crd.innerHTML+=`<div style="display:flex;justify-content:space-between;font-size:13px;color:var(--t2);margin-top:4px"><span>Totaal: <strong style="color:var(--t1)">${sum}</strong> kcal</span><span>Gem: <strong style="color:var(--t1)">${avg}</strong>/dag (${fd} dgn)</span></div>`;area.appendChild(crd);}
 function rYC(area){
-  const crd=document.createElement('div');crd.className='crd';const title=document.createElement('div');title.className='ct';title.textContent='Jaar '+cur.getFullYear();crd.appendChild(title);
+  const crd=document.createElement('div');crd.className='crd';crd.innerHTML='<div class="ct">Jaar '+cur.getFullYear()+'</div>';
   const bc=document.createElement('div');bc.className='bc';const vals=[];for(let m=0;m<12;m++){const dim=new Date(cur.getFullYear(),m+1,0).getDate();let sum=0;for(let d=1;d<=dim;d++)sum+=gval(dkf(new Date(cur.getFullYear(),m,d)),cFilt);vals.push(sum);}const mx=Math.max(...vals,1);const catObj=C.find(c=>c.id===cFilt);
   for(let m=0;m<12;m++){const col=document.createElement('div');col.className='bc-col';const v=vals[m];const h=(v/mx)*100;const isCur=m===cur.getMonth();
-    if(cFilt==='all'&&v>0){const dim=new Date(cur.getFullYear(),m+1,0).getDate();let sH='';C.forEach(cat=>{let cv=0;for(let d=1;d<=dim;d++)cv+=gct(dkf(new Date(cur.getFullYear(),m,d)),cat.id);if(cv>0){const sp=(cv/v)*100;sH+=`<div class="stk-s" style="height:${sp}%;background:${cat.col}"></div>`;}});col.innerHTML=`<div class="bc-val">${v>0?v:''}</div><div class="stk" style="height:${Math.max(h,1)}%">${sH}</div><div class="bc-lbl">${MS[m]}</div>`;}
-    else{const bg=isCur?(catObj?.col||'var(--ac)'):(catObj?.col||'rgba(255,255,255,.1)');col.innerHTML=`<div class="bc-val">${v>0?v:''}</div><div class="bc-bar" style="height:${Math.max(h,1)}%;background:${bg};opacity:${isCur?1:.6}"></div><div class="bc-lbl">${MS[m]}</div>`;}bc.appendChild(col);}crd.appendChild(bc);
-  const sum=vals.reduce((a,b)=>a+b,0);const filledMonths=vals.filter(v=>v>0).length;
-  // Count actual days with data for accurate daily average
-  let filledDays=0;for(let m=0;m<12;m++){const dim=new Date(cur.getFullYear(),m+1,0).getDate();for(let d=1;d<=dim;d++){if(gval(dkf(new Date(cur.getFullYear(),m,d)),cFilt)>0)filledDays++;}}
-  const avg=filledDays?Math.round(sum/filledDays):0;const sm=document.createElement('div');sm.style.cssText='display:flex;justify-content:space-between;font-size:13px;color:var(--t2);margin-top:4px';sm.innerHTML=`<span>Jaar: <strong style="color:var(--t1)">${sum}</strong> kcal</span><span>Gem: <strong style="color:var(--t1)">${avg}</strong> kcal/dag (${filledDays} ${filledDays===1?'dag':'dagen'})</span>`;crd.appendChild(sm);area.appendChild(crd);
-}
+    if(cFilt==='all'&&v>0){const dim=new Date(cur.getFullYear(),m+1,0).getDate();let sH='';C.forEach(cat=>{let cv=0;for(let d=1;d<=dim;d++)cv+=gct(dkf(new Date(cur.getFullYear(),m,d)),cat.id);if(cv>0)sH+=`<div class="stk-s" style="height:${(cv/v)*100}%;background:${cat.col}"></div>`;});col.innerHTML=`<div class="bc-val">${v||''}</div><div class="stk" style="height:${Math.max(h,1)}%">${sH}</div><div class="bc-lbl">${MS[m]}</div>`;}
+    else{const bg=isCur?(catObj?.col||'var(--ac)'):(catObj?.col||'rgba(255,255,255,.1)');col.innerHTML=`<div class="bc-val">${v||''}</div><div class="bc-bar" style="height:${Math.max(h,1)}%;background:${bg};opacity:${isCur?1:.6}"></div><div class="bc-lbl">${MS[m]}</div>`;}bc.appendChild(col);}crd.appendChild(bc);
+  const sum=vals.reduce((a,b)=>a+b,0);let fd=0;for(let m=0;m<12;m++){const dim=new Date(cur.getFullYear(),m+1,0).getDate();for(let d=1;d<=dim;d++){if(gval(dkf(new Date(cur.getFullYear(),m,d)),cFilt)>0)fd++;}}
+  crd.innerHTML+=`<div style="display:flex;justify-content:space-between;font-size:13px;color:var(--t2);margin-top:4px"><span>Jaar: <strong style="color:var(--t1)">${sum}</strong> kcal</span><span>Gem: <strong style="color:var(--t1)">${fd?Math.round(sum/fd):0}</strong>/dag (${fd} dgn)</span></div>`;area.appendChild(crd);}
 
-// ===== EXPORT =====
+// === EXPORT ===
 function rEC(){const con=document.getElementById('exCh');con.innerHTML='';const mk=(id,nm,col)=>{const ch=document.createElement('div');ch.className='chip'+(exFilt===id?' act':'');if(exFilt===id)ch.style.cssText=id==='all'?'background:var(--ac);color:#fff':`background:${col};color:#000`;ch.textContent=nm;ch.onclick=()=>{exFilt=id;rEC();};con.appendChild(ch);};mk('all','Totaal','');C.forEach(c=>mk(c.id,c.sh,c.col));}
 function gED(){const f=document.getElementById('exFrom').value,t=document.getElementById('exTo').value;if(!f||!t)return[];const dates=[];let d=new Date(f+'T00:00:00');const end=new Date(t+'T00:00:00');while(d<=end){dates.push(new Date(d));d.setDate(d.getDate()+1);}return dates;}
-function bET(){const dates=gED();if(!dates.length)return'Geen periode';const cn=exFilt==='all'?'Totaal':C.find(c=>c.id===exFilt)?.nm||'';let txt=`📊 Calorieën — ${cn}\n📅 ${document.getElementById('exFrom').value} t/m ${document.getElementById('exTo').value}\n\n`;let gr=0;let fd=0;dates.forEach(d=>{const v=gval(dkf(d),exFilt);gr+=v;if(v>0)fd++;txt+=`${DS[d.getDay()]} ${d.getDate()}/${d.getMonth()+1}: ${v>0?v+' kcal':'—'}\n`;});txt+=`\nTotaal: ${gr} kcal`;if(fd>0)txt+=`\nGemiddeld: ${Math.round(gr/fd)} kcal/dag (${fd} dagen met invoer)`;return txt;}
-function expCh(){const dates=gED();if(!dates.length){toast('Selecteer periode');return;}const cnv=document.getElementById('expCnv'),ctx=cnv.getContext('2d');const W=800,H=500;cnv.width=W;cnv.height=H;ctx.fillStyle='#0f0f1a';ctx.fillRect(0,0,W,H);const cn=exFilt==='all'?'Totaal':C.find(c=>c.id===exFilt)?.nm||'';ctx.fillStyle='#eaeaea';ctx.font='bold 22px DM Sans,sans-serif';ctx.fillText('Calorieën — '+cn,30,40);ctx.fillStyle='#6a6a8e';ctx.font='14px DM Sans,sans-serif';ctx.fillText(document.getElementById('exFrom').value+' t/m '+document.getElementById('exTo').value,30,62);const vals=dates.map(d=>gval(dkf(d),exFilt));const mx=Math.max(...vals,exFilt==='all'?tgt:100,1);const cL=60,cR=W-30,cT=90,cB=H-60,cW=cR-cL,cH=cB-cT;const bW=Math.min(40,Math.max(6,(cW/dates.length)-3));ctx.strokeStyle='rgba(255,255,255,0.06)';ctx.lineWidth=1;for(let i=0;i<=4;i++){const y=cT+cH*(1-i/4);ctx.beginPath();ctx.moveTo(cL,y);ctx.lineTo(cR,y);ctx.stroke();ctx.fillStyle='#6a6a8e';ctx.font='11px DM Sans,sans-serif';ctx.fillText(Math.round(mx*i/4),5,y+4);}if(exFilt==='all'){const ty=cB-(tgt/mx)*cH;ctx.strokeStyle='rgba(233,69,96,.4)';ctx.setLineDash([6,4]);ctx.beginPath();ctx.moveTo(cL,ty);ctx.lineTo(cR,ty);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='#e94560';ctx.font='11px DM Sans,sans-serif';ctx.fillText('Doel: '+tgt,cR-80,ty-6);}const color=exFilt==='all'?'#e94560':C.find(c=>c.id===exFilt)?.col||'#e94560';dates.forEach((d,i)=>{const x=cL+(i+.5)*(cW/dates.length);const v=vals[i],h=(v/mx)*cH;if(exFilt==='all'&&v>0){let sy=cB;C.forEach(cat=>{const cv=gct(dkf(d),cat.id);if(cv>0){const sh=(cv/mx)*cH;ctx.fillStyle=cat.col;ctx.fillRect(x-bW/2,sy-sh,bW,sh);sy-=sh;}});}else{ctx.fillStyle=color;ctx.fillRect(x-bW/2,cB-Math.max(h,1),bW,Math.max(h,1));}ctx.fillStyle='#6a6a8e';ctx.font='9px DM Sans,sans-serif';ctx.textAlign='center';const lbl=dates.length<=14?DS[d.getDay()]+' '+d.getDate()+'/'+(d.getMonth()+1):d.getDate()+'/'+(d.getMonth()+1);ctx.fillText(lbl,x,cB+14);if(v>0){ctx.fillStyle='#a0a0b8';ctx.font='bold 9px DM Sans,sans-serif';ctx.fillText(v,x,cB-h-5);}ctx.textAlign='left';});if(exFilt==='all'){let lx=30,ly=H-18;C.forEach(cat=>{ctx.fillStyle=cat.col;ctx.fillRect(lx,ly-8,10,10);ctx.fillStyle='#a0a0b8';ctx.font='10px DM Sans,sans-serif';ctx.fillText(cat.sh,lx+14,ly);lx+=ctx.measureText(cat.sh).width+24;});}const gr=vals.reduce((a,b)=>a+b,0);const fd=vals.filter(v=>v>0).length;const avg=fd?Math.round(gr/fd):0;ctx.fillStyle='#eaeaea';ctx.font='bold 14px DM Sans,sans-serif';ctx.textAlign='right';ctx.fillText('Totaal: '+gr+' kcal   |   Gem: '+avg+' kcal/dag ('+fd+' dgn)',W-30,40);ctx.textAlign='left';
+function bET(){const dates=gED();if(!dates.length)return'Geen periode';const cn=exFilt==='all'?'Totaal':C.find(c=>c.id===exFilt)?.nm||'';let txt=`📊 Calorieën — ${cn}\n📅 ${document.getElementById('exFrom').value} t/m ${document.getElementById('exTo').value}\n\n`;let gr=0,fd=0;dates.forEach(d=>{const v=gval(dkf(d),exFilt);gr+=v;if(v>0)fd++;txt+=`${DS[d.getDay()]} ${d.getDate()}/${d.getMonth()+1}: ${v>0?v+' kcal':'—'}\n`;});txt+=`\nTotaal: ${gr} kcal`;if(fd>0)txt+=`\nGem: ${Math.round(gr/fd)} kcal/dag (${fd} dgn)`;return txt;}
+function expCh(){const dates=gED();if(!dates.length){toast('Selecteer periode');return;}const cnv=document.getElementById('expCnv'),ctx=cnv.getContext('2d');const W=800,H=500;cnv.width=W;cnv.height=H;ctx.fillStyle='#0f0f1a';ctx.fillRect(0,0,W,H);const cn=exFilt==='all'?'Totaal':C.find(c=>c.id===exFilt)?.nm||'';ctx.fillStyle='#eaeaea';ctx.font='bold 22px DM Sans,sans-serif';ctx.fillText('Calorieën — '+cn,30,40);ctx.fillStyle='#6a6a8e';ctx.font='14px DM Sans,sans-serif';ctx.fillText(document.getElementById('exFrom').value+' t/m '+document.getElementById('exTo').value,30,62);const vals=dates.map(d=>gval(dkf(d),exFilt));const mx=Math.max(...vals,exFilt==='all'?tgt:100,1);const cL=60,cR=W-30,cT=90,cB=H-60,cW=cR-cL,cH=cB-cT;const bW=Math.min(40,Math.max(6,(cW/dates.length)-3));ctx.strokeStyle='rgba(255,255,255,0.06)';ctx.lineWidth=1;for(let i=0;i<=4;i++){const y=cT+cH*(1-i/4);ctx.beginPath();ctx.moveTo(cL,y);ctx.lineTo(cR,y);ctx.stroke();ctx.fillStyle='#6a6a8e';ctx.font='11px DM Sans,sans-serif';ctx.fillText(Math.round(mx*i/4),5,y+4);}if(exFilt==='all'){const ty=cB-(tgt/mx)*cH;ctx.strokeStyle='rgba(233,69,96,.4)';ctx.setLineDash([6,4]);ctx.beginPath();ctx.moveTo(cL,ty);ctx.lineTo(cR,ty);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='#e94560';ctx.font='11px DM Sans,sans-serif';ctx.fillText('Doel: '+tgt,cR-80,ty-6);}const color=exFilt==='all'?'#e94560':C.find(c=>c.id===exFilt)?.col||'#e94560';dates.forEach((d,i)=>{const x=cL+(i+.5)*(cW/dates.length);const v=vals[i],h=(v/mx)*cH;if(exFilt==='all'&&v>0){let sy=cB;C.forEach(cat=>{const cv=gct(dkf(d),cat.id);if(cv>0){const sh=(cv/mx)*cH;ctx.fillStyle=cat.col;ctx.fillRect(x-bW/2,sy-sh,bW,sh);sy-=sh;}});}else{ctx.fillStyle=color;ctx.fillRect(x-bW/2,cB-Math.max(h,1),bW,Math.max(h,1));}ctx.fillStyle='#6a6a8e';ctx.font='9px DM Sans,sans-serif';ctx.textAlign='center';ctx.fillText(dates.length<=14?DS[d.getDay()]+' '+d.getDate()+'/'+(d.getMonth()+1):d.getDate()+'/'+(d.getMonth()+1),x,cB+14);if(v>0){ctx.fillStyle='#a0a0b8';ctx.font='bold 9px DM Sans,sans-serif';ctx.fillText(v,x,cB-h-5);}ctx.textAlign='left';});if(exFilt==='all'){let lx=30,ly=H-18;C.forEach(cat=>{ctx.fillStyle=cat.col;ctx.fillRect(lx,ly-8,10,10);ctx.fillStyle='#a0a0b8';ctx.font='10px DM Sans,sans-serif';ctx.fillText(cat.sh,lx+14,ly);lx+=ctx.measureText(cat.sh).width+24;});}const gr=vals.reduce((a,b)=>a+b,0);const fd=vals.filter(v=>v>0).length;ctx.fillStyle='#eaeaea';ctx.font='bold 14px DM Sans,sans-serif';ctx.textAlign='right';ctx.fillText(`Totaal: ${gr} kcal | Gem: ${fd?Math.round(gr/fd):0}/dag (${fd} dgn)`,W-30,40);ctx.textAlign='left';
   cnv.toBlob(blob=>{window._eB=blob;if(navigator.share){try{const file=new File([blob],'calorieen.png',{type:'image/png'});if(navigator.canShare?.({files:[file]})){navigator.share({text:bET(),files:[file]});return;}}catch(e){}}const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='calorieen.png';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);toast('Gedownload');},'image/png');}
-async function shrV(m){const txt=bET();if(m==='cp'){try{await navigator.clipboard.writeText(txt);toast('Gekopieerd');}catch(e){const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);toast('Gekopieerd');}return;}if(window._eB&&navigator.share){try{const file=new File([window._eB],'calorieen.png',{type:'image/png'});if(navigator.canShare?.({files:[file]})){await navigator.share({text:txt,files:[file]});return;}}catch(e){}}const enc=encodeURIComponent(txt);if(m==='wa')window.open('https://wa.me/?text='+enc,'_blank');else if(m==='sg')window.open('https://signal.me/#text='+enc,'_blank');else if(m==='ml'){const cn=exFilt==='all'?'Totaal':C.find(c=>c.id===exFilt)?.nm||'';window.open('mailto:?subject='+encodeURIComponent('Calorieën — '+cn)+'&body='+enc,'_blank');}}
+async function shrV(m){const txt=bET();if(m==='cp'){try{await navigator.clipboard.writeText(txt);toast('Gekopieerd');}catch(e){toast('Kopiëren mislukt');}return;}if(m==='share'&&navigator.share){try{const sd={text:txt};if(window._eB){const f=new File([window._eB],'calorieen.png',{type:'image/png'});if(navigator.canShare?.({files:[f]}))sd.files=[f];}await navigator.share(sd);}catch(e){if(e.name!=='AbortError')toast('Delen mislukt');}}}
 
-// ===== WEEK VIEW =====
-function rWk(){const rows=document.getElementById('wRows');rows.innerHTML='';const wd=getWD(cur),mx=Math.max(tgt,...wd.map(d=>gt(dkf(d))),100);let wt=0;wd.forEach(d=>{const t=gt(dkf(d));wt+=t;const pct=(t/mx)*100,isSel=dkf(d)===dkf(cur);const row=document.createElement('div');row.className='wdr';row.style.opacity=isSel?'1':'0.7';row.onclick=()=>{cur=new Date(d);updD();render();swTab('tracker',document.querySelectorAll('.tab')[0]);};row.innerHTML=`<span class="wdn" style="${isSel?'color:var(--ac)':''}">${DS[d.getDay()]} ${d.getDate()}/${d.getMonth()+1}</span><div class="wdbw"><div class="wdb" style="width:${pct}%"></div></div><span class="wdk">${t}</span>`;rows.appendChild(row);});document.getElementById('wTot').textContent=wt+' kcal';}
-function swTab(tab,el){activeTab=tab;document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));el.classList.add('active');document.getElementById('tV').classList.toggle('hidden',tab!=='tracker');document.getElementById('cV').classList.toggle('active',tab==='charts');document.getElementById('wV').classList.toggle('active',tab==='week');updD();if(tab==='charts')rCh();if(tab==='week')rWk();}
+// === ANALYSE TAB ===
+function setAnP(p){anPeriod=p;document.querySelectorAll('.an-pt').forEach(t=>t.classList.remove('active'));document.querySelector(`.an-pt[onclick="setAnP('${p}')"]`).classList.add('active');}
+function getAnalysisData(){
+  let dates=[];
+  if(anPeriod==='dag'){dates=[new Date(cur)];}
+  else if(anPeriod==='week'){dates=getWD(cur);}
+  else{dates=getMD(cur);}
+  const days=[];
+  dates.forEach(d=>{const k=dkf(d);const day=gd(k);const items=[];let totals={kcal:0,eiwit:0,koolh:0,vet:0,suikers:0,vezels:0,zout:0};
+    C.forEach(cat=>{(day[cat.id]||[]).forEach(e=>{items.push(e.food+' ('+e.kcal+' kcal)');for(const m in totals)totals[m]+=(e[m]||0);});});
+    if(totals.kcal>0)days.push({date:k,items,totals});});
+  return days;
+}
+async function runAnalysis(){
+  const btn=document.getElementById('anBtn'),res=document.getElementById('anResult');
+  const days=getAnalysisData();
+  if(!days.length){toast('Geen data in deze periode');return;}
+  if(!getGeminiKey()){toast('Stel eerst een API-key in bij Instellingen');return;}
+  btn.disabled=true;btn.innerHTML='<span class="spinner"></span> Analyseren...';res.innerHTML='';
+
+  let summary='';
+  days.forEach(d=>{
+    summary+=`${d.date}: ${d.totals.kcal} kcal, E${r1(d.totals.eiwit)}g, K${r1(d.totals.koolh)}g, V${r1(d.totals.vet)}g, S${r1(d.totals.suikers)}g, Vz${r1(d.totals.vezels)}g, Zo${r1(d.totals.zout)}g\n  Gegeten: ${d.items.join(', ')}\n`;
+  });
+
+  const prompt=`Je bent een Nederlandse voedingsdeskundige. Analyseer het volgende voedingsdagboek en geef een persoonlijke, concrete analyse in het Nederlands.
+
+Referentie-inname (RI) per dag: 2000 kcal, 50g eiwit, 260g koolhydraten, 70g vet, max 90g suikers, min 25g vezels, max 6g zout.
+
+Data:
+${summary}
+
+Geef je analyse in deze structuur:
+1. SAMENVATTING: kort overzicht van de periode (2-3 zinnen)
+2. POSITIEF: wat gaat er goed (concrete punten)
+3. AANDACHTSPUNTEN: waar zit je boven of onder de RI (concreet met getallen)
+4. TIPS: 3-5 praktische verbetersuggesties gebaseerd op wat er daadwerkelijk is gegeten
+5. SCORE: geef een totaalscore van 1-10 voor de voedingskwaliteit
+
+Houd het persoonlijk, concreet en motiverend. Verwijs naar specifieke items die zijn gegeten. Maximaal 300 woorden.`;
+
+  const r=await aiCall(prompt);
+  btn.disabled=false;btn.innerHTML='🧠 Analyseer mijn voeding';
+  if(r.ok){res.innerHTML=`<div class="analysis-content">${r.text.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>')}</div>`;}
+  else{res.innerHTML=`<div style="color:var(--dng);font-size:13px">Analyse mislukt: ${r.msg}</div>`;}
+}
+
+// === TABS & SETTINGS ===
+function swTab(tab,el){activeTab=tab;document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));el.classList.add('active');
+  document.getElementById('tV').classList.toggle('hidden',tab!=='tracker');
+  document.getElementById('cV').classList.toggle('active',tab==='charts');
+  document.getElementById('aV').classList.toggle('active',tab==='analyse');
+  document.getElementById('sV').classList.toggle('active',tab==='settings');
+  updD();if(tab==='charts')rCh();}
 function updTgt(v){tgt=parseInt(v)||2000;localStorage.setItem('calTgt',tgt);render();toast(`Doel: ${tgt} kcal`);}
 function toast(msg){const t=document.getElementById('tst');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500);}
+function saveKey(){const inp=document.getElementById('keyInp'),key=inp.value.trim(),st=document.getElementById('keyStatus');if(!key||!key.startsWith('AIza')){st.textContent='Ongeldige key';st.style.color='var(--dng)';setTimeout(()=>{st.textContent='';st.style.color='';},3000);return;}setGeminiKey(key);st.textContent='✓ Opgeslagen';st.style.color='var(--ok)';setTimeout(()=>{st.textContent='';st.style.color='';},3000);toast('API-key opgeslagen');}
+function expData(){const data=ld();const json=JSON.stringify({version:2,exported:new Date().toISOString(),target:tgt,entries:data},null,2);const blob=new Blob([json],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=`calorieen_backup_${dkf(new Date())}.json`;document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);toast('Geexporteerd');}
+function impData(event){const file=event.target.files[0];if(!file)return;const st=document.getElementById('impStatus');st.textContent='Inlezen...';const reader=new FileReader();reader.onload=function(e){try{const obj=JSON.parse(e.target.result);let entries=obj.version&&obj.entries?obj.entries:(typeof obj==='object'&&!Array.isArray(obj)?obj:null);if(obj.target)tgt=obj.target;if(!entries){st.textContent='Ongeldig bestand';st.style.color='var(--dng)';setTimeout(()=>{st.textContent='';st.style.color='';},4000);return;}let dc=0,ec=0;for(const[k,day] of Object.entries(entries)){if(!/^\d{4}-\d{2}-\d{2}$/.test(k))continue;dc++;if(typeof day==='object')for(const cat of Object.values(day))if(Array.isArray(cat))ec+=cat.length;}if(!dc){st.textContent='Geen data';return;}const existing=ld();if(Object.keys(existing).length>0&&!confirm('Samenvoegen? Bestaande dagen worden overschreven.')){st.textContent='';event.target.value='';return;}const merged={...existing};for(const[k,day] of Object.entries(entries))if(/^\d{4}-\d{2}-\d{2}$/.test(k))merged[k]=day;sd(merged);localStorage.setItem('calTgt',tgt);document.getElementById('tInp').value=tgt;render();st.textContent=`✓ ${dc} dagen, ${ec} items`;st.style.color='var(--ok)';setTimeout(()=>{st.textContent='';st.style.color='';},4000);toast('Geimporteerd!');}catch(err){st.textContent='Fout';st.style.color='var(--dng)';setTimeout(()=>{st.textContent='';st.style.color='';},4000);}event.target.value='';};reader.readAsText(file);}
+function clearAllData(){if(!confirm('ALLE data wissen?'))return;if(!confirm('Zeker weten?'))return;localStorage.removeItem('calD');localStorage.removeItem('calTgt');tgt=2000;document.getElementById('tInp').value=tgt;render();toast('Gewist');}
 
-// ===== DATA EXPORT / IMPORT =====
-function expData(){
-  const data=ld();
-  const exportObj={
-    version:1,
-    exported:new Date().toISOString(),
-    target:tgt,
-    entries:data
-  };
-  const json=JSON.stringify(exportObj,null,2);
-  const blob=new Blob([json],{type:'application/json'});
-  const url=URL.createObjectURL(blob);
-  const a=document.createElement('a');
-  const dateStr=dkf(new Date());
-  a.href=url;
-  a.download=`calorieen_backup_${dateStr}.json`;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-
-  // Count entries for feedback
-  let totalDays=Object.keys(data).length;
-  let totalEntries=0;
-  for(const day of Object.values(data)){
-    for(const cat of Object.values(day)){
-      if(Array.isArray(cat)) totalEntries+=cat.length;
-    }
-  }
-  toast(`Geexporteerd: ${totalDays} dagen, ${totalEntries} invoeren`);
-}
-
-function impData(event){
-  const file=event.target.files[0];
-  if(!file)return;
-  const st=document.getElementById('impStatus');
-  st.textContent='Bezig met inlezen...';
-
-  const reader=new FileReader();
-  reader.onload=function(e){
-    try{
-      const obj=JSON.parse(e.target.result);
-
-      // Validate structure
-      let entries=null;
-      if(obj.version&&obj.entries){
-        // New format with metadata
-        entries=obj.entries;
-        if(obj.target) tgt=obj.target;
-      } else if(typeof obj==='object'&&!Array.isArray(obj)){
-        // Raw data format (just the entries object)
-        entries=obj;
-      } else {
-        st.textContent='Ongeldig bestand. Verwacht JSON backup.';
-        st.style.color='var(--dng)';
-        setTimeout(()=>{st.textContent='';st.style.color='';},4000);
-        return;
-      }
-
-      // Validate that entries look like calorie data
-      let dayCount=0,entryCount=0;
-      for(const[key,day] of Object.entries(entries)){
-        if(!/^\d{4}-\d{2}-\d{2}$/.test(key))continue;
-        dayCount++;
-        if(typeof day==='object'){
-          for(const cat of Object.values(day)){
-            if(Array.isArray(cat)) entryCount+=cat.length;
-          }
-        }
-      }
-
-      if(dayCount===0){
-        st.textContent='Geen geldige data gevonden in bestand.';
-        st.style.color='var(--dng)';
-        setTimeout(()=>{st.textContent='';st.style.color='';},4000);
-        return;
-      }
-
-      // Merge or replace? Ask via confirm
-      const existing=ld();
-      const hasExisting=Object.keys(existing).length>0;
-
-      if(hasExisting){
-        const merge=confirm('Er is al data aanwezig.\n\nKlik OK om samen te voegen (bestaande dagen worden overschreven).\nKlik Annuleren om te stoppen.');
-        if(!merge){
-          st.textContent='Import geannuleerd.';
-          setTimeout(()=>{st.textContent='';},2000);
-          event.target.value='';
-          return;
-        }
-      }
-
-      // Merge: imported data overwrites existing days
-      const merged={...existing};
-      for(const[key,day] of Object.entries(entries)){
-        if(/^\d{4}-\d{2}-\d{2}$/.test(key)){
-          merged[key]=day;
-        }
-      }
-
-      sd(merged);
-      localStorage.setItem('calTgt',tgt);
-      document.getElementById('tInp').value=tgt;
-      render();
-
-      st.textContent=`Geimporteerd: ${dayCount} dagen, ${entryCount} invoeren`;
-      st.style.color='var(--ok)';
-      setTimeout(()=>{st.textContent='';st.style.color='';},4000);
-      toast('Data geimporteerd!');
-
-    }catch(err){
-      st.textContent='Fout bij inlezen: ongeldig JSON bestand.';
-      st.style.color='var(--dng)';
-      setTimeout(()=>{st.textContent='';st.style.color='';},4000);
-    }
-    event.target.value='';
-  };
-  reader.readAsText(file);
-}
-
-function clearAllData(){
-  const ok=confirm('ALLE data wissen?\n\nDit verwijdert al je invoeren, alle dagen, alles.\nDit kan niet ongedaan worden gemaakt.\n\nTip: maak eerst een backup via "Exporteer data".');
-  if(!ok)return;
-  const ok2=confirm('Weet je het heel zeker?\n\nKlik OK om alles te wissen.');
-  if(!ok2)return;
-  localStorage.removeItem('calD');
-  localStorage.removeItem('calTgt');
-  tgt=2000;
-  document.getElementById('tInp').value=tgt;
-  render();
-  toast('Alle data gewist');
-}
-
-function saveKey(){
-  const inp=document.getElementById('keyInp');
-  const key=inp.value.trim();
-  const st=document.getElementById('keyStatus');
-  if(!key){st.textContent='Voer een key in';st.style.color='var(--dng)';setTimeout(()=>{st.textContent='';st.style.color='';},3000);return;}
-  if(!key.startsWith('AIza')){st.textContent='Ongeldige key (moet beginnen met AIza...)';st.style.color='var(--dng)';setTimeout(()=>{st.textContent='';st.style.color='';},3000);return;}
-  setGeminiKey(key);
-  st.textContent='✓ Key opgeslagen! AI calorieën actief.';st.style.color='var(--ok)';
-  setTimeout(()=>{st.textContent='';st.style.color='';},3000);
-  toast('API-key opgeslagen');
-}
-
-// Init
+// === INIT ===
 document.getElementById('tInp').value=tgt;
-const savedKey=getGeminiKey();
-if(savedKey){document.getElementById('keyInp').value=savedKey;document.getElementById('keyStatus').textContent='✓ Key actief';document.getElementById('keyStatus').style.color='var(--ok)';}
+const sk=getGeminiKey();if(sk){document.getElementById('keyInp').value=sk;document.getElementById('keyStatus').textContent='✓ Key actief';document.getElementById('keyStatus').style.color='var(--ok)';}
 updD();render();
 </script>
 </body>
