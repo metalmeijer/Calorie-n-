@@ -184,7 +184,7 @@ async function aiK(food){
   try{
     const ctrl=new AbortController();
     const timer=setTimeout(()=>ctrl.abort(),8000);
-    const gk=getGeminiKey();if(!gk)return -3;
+    const gk=getGeminiKey();if(!gk)return {code:-3,msg:'Geen API-key'};
     const r=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${gk}`,{
       method:'POST',
       headers:{'Content-Type':'application/json'},
@@ -192,15 +192,15 @@ async function aiK(food){
       body:JSON.stringify({contents:[{parts:[{text:`Je bent een voedingsexpert. Schat het totaal aantal calorieën (kcal) voor de volgende Nederlandse maaltijd of snack. Houd rekening met typische Nederlandse portiegroottes. Als er "klein" of "groot" bij staat, pas dan je schatting aan. Geef ALLEEN een getal terug, niets anders. Geen tekst, geen uitleg, puur het getal.\n\nEten: ${food}`}]}]})
     });
     clearTimeout(timer);
-    if(!r.ok)return -1;
+    if(!r.ok){const errBody=await r.text().catch(()=>'');return {code:-1,msg:`HTTP ${r.status}: ${errBody.substring(0,100)}`};}
     const d=await r.json();
     const txt=d.candidates?.[0]?.content?.parts?.[0]?.text||'';
     const n=parseInt(txt.replace(/[^0-9]/g,''));
-    if(n&&n>0&&n<15000)return n;
-    return -1;
+    if(n&&n>0&&n<15000)return {code:n,msg:'ok'};
+    return {code:-1,msg:'Geen geldig getal in antwoord: '+txt.substring(0,50)};
   }catch(e){
-    if(e.name==='AbortError')return -2;
-    return -2;
+    if(e.name==='AbortError')return {code:-2,msg:'Timeout na 8s'};
+    return {code:-2,msg:e.name+': '+e.message};
   }
 }
 
@@ -226,15 +226,15 @@ async function addE(cid){
 
   const aiResult=await aiK(food);
 
-  if(aiResult>0){
+  if(aiResult.code>0){
     btn.disabled=false;btn.textContent='+';st.textContent='';
-    svE(cid,food,aiResult);toast(`${food} — ${aiResult} kcal (AI)`);acHide(cid);return;
+    svE(cid,food,aiResult.code);toast(`${food} — ${aiResult.code} kcal (AI)`);acHide(cid);return;
   }
 
-  // AI failed: try local DB
-  if(aiResult===-3){st.textContent='Geen API-key. Lokale schatting...';}
-  else if(aiResult===-2){st.textContent='AI niet bereikbaar, lokale schatting...';}
-  else{st.textContent='AI kon niet schatten, lokale schatting...';}
+  // AI failed: show reason and try local DB
+  if(aiResult.code===-3){st.textContent='Geen API-key. Lokale schatting...';}
+  else{st.textContent='AI fout: '+aiResult.msg+'. Lokale schatting...';}
+  console.log('AI fout:',aiResult.msg);
 
   kcal=estK(food);
   btn.disabled=false;btn.textContent='+';
@@ -261,14 +261,15 @@ async function aiLook(cid){
   const st=document.getElementById('st_'+cid);
   st.innerHTML='<span class="spinner"></span> AI schat calorieën...';
   const result=await aiK(food);
-  if(result>0){ci.value=result;st.textContent='';toast(`AI schatting: ${result} kcal`);}
-  else if(result===-1){
-    const local=estK(food);
-    if(local>0){ci.value=local;st.textContent='⚠️ Lokale schatting';setTimeout(()=>st.textContent='',3000);toast(`Lokaal: ${local} kcal`);}
-    else{st.textContent='Niet gevonden, vul handmatig in';setTimeout(()=>st.textContent='',3000);}
-  } else {
-    st.textContent='AI niet bereikbaar';setTimeout(()=>st.textContent='',3000);
-    const local=estK(food);if(local>0){ci.value=local;toast(`Lokaal: ${local} kcal`);}
+  console.log('AI result:',result);
+  if(result.code>0){ci.value=result.code;st.textContent='';toast(`AI schatting: ${result.code} kcal`);}
+  else{
+    st.textContent='AI fout: '+result.msg;
+    setTimeout(()=>{
+      const local=estK(food);
+      if(local>0){ci.value=local;st.textContent='⚠️ Lokale schatting';setTimeout(()=>st.textContent='',3000);toast(`Lokaal: ${local} kcal`);}
+      else{st.textContent='Niet gevonden, vul handmatig in';setTimeout(()=>st.textContent='',3000);}
+    },2000);
   }
 }
 
